@@ -14,6 +14,7 @@ public class Korisnik {
 	private String email;
 	private String adresa;
 	private String drzava;
+	private boolean ulogovan;
 	
 	//Geteri i Seteri za sva polja
 	public String getKorisnickoIme() {
@@ -43,8 +44,19 @@ public class Korisnik {
 	public Uloga getUloga() {
 		return uloga;
 	}
-	public void setUloga(Uloga uloga) {
-		this.uloga = uloga;
+	public void setUloga(String uloga) {
+		if(uloga.equals("Prodavac"))
+		{
+			this.uloga = Uloga.Prodavac;		
+		}
+		else if(uloga.equals("Kupac"))
+		{
+			this.uloga = Uloga.Kupac;
+		}
+		else if(uloga.equals("Admin"))
+		{
+			this.uloga = Uloga.Administrator;
+		}
 	}
 	public String getTelefon() {
 		return telefon;
@@ -69,5 +81,11 @@ public class Korisnik {
 	}
 	public void setDrzava(String drzava) {
 		this.drzava = drzava;
+	}
+	public boolean isUlogovan() {
+		return ulogovan;
+	}
+	public void setUlogovan(boolean ulogovan) {
+		this.ulogovan = ulogovan;
 	}
 }

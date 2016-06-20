@@ -9,4 +9,54 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>servleti.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegistrujSe</display-name>
+    <servlet-name>RegistrujSe</servlet-name>
+    <servlet-class>servleti.RegistrujSe</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrujSe</servlet-name>
+    <url-pattern>/RegistrujSe</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajProizvod</display-name>
+    <servlet-name>DodajProizvod</servlet-name>
+    <servlet-class>servleti.DodajProizvod</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajProizvod</servlet-name>
+    <url-pattern>/DodajProizvod</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajKategoriju</display-name>
+    <servlet-name>DodajKategoriju</servlet-name>
+    <servlet-class>adminServleti.DodajKategoriju</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajKategoriju</servlet-name>
+    <url-pattern>/DodajKategoriju</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajDostavljaca</display-name>
+    <servlet-name>DodajDostavljaca</servlet-name>
+    <servlet-class>adminServleti.DodajDostavljaca</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajDostavljaca</servlet-name>
+    <url-pattern>/DodajDostavljaca</url-pattern>
+  </servlet-mapping>
 </web-app>

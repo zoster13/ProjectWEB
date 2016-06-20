@@ -1,45 +1,23 @@
 package beans;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
-//primjer: posta srbije, fedex, dhl...
 public class Dostavljaci {
 
-	private String sifra;		//jedinstvena
-	private String naziv;
-	private String opis;
-	private HashSet<String> drzavePoslovanja;
-	private double cijenaPrenosa;	//zavisi od dimenzije i tezine proizvoda
+	private HashMap<String, Dostavljac> dostavljaci;
 	
-	//Geteri i seteri za sva polja
-	public String getSifra() {
-		return sifra;
+	public Dostavljaci()
+	{
+		dostavljaci = new HashMap<String, Dostavljac>();
 	}
-	public void setSifra(String sifra) {
-		this.sifra = sifra;
+	
+	public HashMap<String, Dostavljac>  getDostavljaci()
+	{
+		return this.dostavljaci;
 	}
-	public String getNaziv() {
-		return naziv;
-	}
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
-	}
-	public String getOpis() {
-		return opis;
-	}
-	public void setOpis(String opis) {
-		this.opis = opis;
-	}
-	public HashSet<String> getDrzavePoslovanja() {
-		return drzavePoslovanja;
-	}
-	public void setDrzavePoslovanja(HashSet<String> drzavePoslovanja) {
-		this.drzavePoslovanja = drzavePoslovanja;
-	}
-	public double getCijenaPrenosa() {
-		return cijenaPrenosa;
-	}
-	public void setCijenaPrenosa(double cijenaPrenosa) {
-		this.cijenaPrenosa = cijenaPrenosa;
+	
+	public void setDostavljaci(HashMap<String, Dostavljac>  dostavljaci)
+	{
+		this.dostavljaci = dostavljaci;
 	}
 }

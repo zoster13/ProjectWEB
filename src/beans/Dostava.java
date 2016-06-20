@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Dostava {
 
-	private Dostavljaci dostavljac;
+	private Dostavljac dostavljac;
 	private Date trajanjePrenosa;
 	private double cijenaPrenosa;
 	
 	//Geteri i seteri
-	public Dostavljaci getDostavljac() {
+	public Dostavljac getDostavljac() {
 		return dostavljac;
 	}
-	public void setDostavljac(Dostavljaci dostavljac) {
+	public void setDostavljac(Dostavljac dostavljac) {
 		this.dostavljac = dostavljac;
 	}
 	public Date getTrajanjePrenosa() {

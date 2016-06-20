@@ -6,7 +6,7 @@ public class KategorijaProizvoda {
 	//Polja
 	private String naziv;		//jedinstven
 	private String opis;
-	private KategorijaProizvoda podkategorija;
+	private String podkategorija;
 	
 	//Geteri i Seteri za sva polja
 	public String getNaziv() {
@@ -21,10 +21,10 @@ public class KategorijaProizvoda {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	public KategorijaProizvoda getPodkategorija() {
+	public String getPodkategorija() {
 		return podkategorija;
 	}
-	public void setPodkategorija(KategorijaProizvoda podkategorija) {
+	public void setPodkategorija(String podkategorija) {
 		this.podkategorija = podkategorija;
 	}
 }
