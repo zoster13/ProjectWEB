@@ -1,6 +1,8 @@
-package beans;
+package kolekcije;
 
 import java.util.HashMap;
+
+import beans.Korisnik;
 
 public class Korisnici {
 

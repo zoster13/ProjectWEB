@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Korisnici;
+import kolekcije.Korisnici;
 import beans.Korisnik;
 
 /**

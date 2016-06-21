@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Korisnici;
+import kolekcije.Korisnici;
 import beans.Korisnik;
 
 /**
@@ -63,23 +63,10 @@ public class RegistrujSe extends HttpServlet {
 		String ime = request.getParameter("ime");
 		String prezime = request.getParameter("prezime");
 		String uloga = request.getParameter("uloga");
-		String telefon = request.getParameter("telefon");
 		String email = request.getParameter("email");
 		String adresa = request.getParameter("adresa");
 		String drzava = request.getParameter("drzava");
-		
-		//Novi korisnik
-		Korisnik noviKorisnik = new Korisnik();
-		noviKorisnik.setKorisnickoIme(username);
-		noviKorisnik.setSifra(pass);
-		noviKorisnik.setIme(ime);
-		noviKorisnik.setPrezime(prezime);
-		noviKorisnik.setUloga(uloga);
-		noviKorisnik.setTelefon(telefon);
-		noviKorisnik.setEmail(email);
-		noviKorisnik.setAdresa(adresa);
-		noviKorisnik.setDrzava(drzava);
-		noviKorisnik.setUlogovan(false);
+		String telefon = request.getParameter("telefon");
 		
 		if(koriscnici.getKorisnici().containsKey(username))
 		{
@@ -91,6 +78,19 @@ public class RegistrujSe extends HttpServlet {
 		}
 		else
 		{
+			//Novi korisnik
+			Korisnik noviKorisnik = new Korisnik();
+			noviKorisnik.setKorisnickoIme(username);
+			noviKorisnik.setSifra(pass);
+			noviKorisnik.setIme(ime);
+			noviKorisnik.setPrezime(prezime);
+			noviKorisnik.setUloga(uloga);
+			noviKorisnik.setTelefon(telefon);
+			noviKorisnik.setEmail(email);
+			noviKorisnik.setAdresa(adresa);
+			noviKorisnik.setDrzava(drzava);
+			noviKorisnik.setUlogovan(false);
+			
 			//Registruj novog korisnika
 			koriscnici.getKorisnici().put(username, noviKorisnik);	
 		

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Dostavljac;
-import beans.Dostavljaci;
+import kolekcije.Dostavljaci;
 
 /**
  * Servlet implementation class DodajDostavljaca
@@ -50,7 +50,7 @@ public class DodajDostavljaca extends HttpServlet {
 		{
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Dostavljac za datom sifrom vec postoji');");
-			//out.println("location='registruj.jsp';");
+			out.println("location='dodajDostavljaca.jsp';");
 			out.println("</script>");
 		}
 		else

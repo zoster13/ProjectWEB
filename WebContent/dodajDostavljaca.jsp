@@ -9,6 +9,45 @@
 <!-- Bootstrap -->
 <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
 
+<script type="text/javascript">
+	function Validacija()
+	{
+		var sifra = document.forms["forma"].sifraDostavljaca.value;
+		var naziv = document.forms["forma"].nazivDostavljaca.value;
+		var opis = document.forms["forma"].opisDostavljaca.value;
+		var drzave = document.forms["forma"].drzave.value;
+		var tarife = document.forms["forma"].tarifeDostavljaca.value;
+	
+		if(sifra==null || sifra=="")
+		{
+			alert("Unesite sifru dostavljaca.");
+			return false;
+		}
+		else if(naziv==null || naziv=="")
+		{
+			alert("Unesite naziv dostavljaca.");
+			return false;
+		}
+		else if(opis==null || opis=="")
+		{
+			alert("Unesite opis dostavljaca.");
+			return false;
+		}
+		else if(drzave==null || drzave=="")
+		{
+			alert("Unesite drzave poslovanja dostavljaca.");
+			return false;
+		}
+		else if(tarife==null || tarife=="")
+		{
+			alert("Unesite tarife(cijene prenosa) dostavljaca.");
+			return false;
+		}
+		
+		return true;
+	}
+</script>
+
 </head>
 <body>
 
@@ -16,7 +55,7 @@
  	
 <h3> Dodavanje dostavljaca </h3>
 
-<form action="DodajDostavljaca" method="post" class="well">
+<form action="DodajDostavljaca" name="forma" method="post" class="well">
 	<table>
 		<tr>
 			<td align="right"> Sifra: </td>
@@ -40,7 +79,10 @@
 		</tr>
 		<tr>
 			<td> &nbsp; </td>
-			<td> <input type="submit" class="btn btn-success"> </td>
+			<td align="center"> 
+				<input type="submit" value="Dodaj" class="btn btn-success"> 
+				<a href="admin.jsp" class="btn btn-danger">Odustani</a>	
+			</td>
 		</tr>
 		
 	</table>

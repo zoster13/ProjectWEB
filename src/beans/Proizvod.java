@@ -1,6 +1,5 @@
 package beans;
 
-import java.awt.Image;
 import java.util.HashSet;
 
 public class Proizvod {
@@ -13,8 +12,8 @@ public class Proizvod {
 	private String zemljaProizvodnje;
 	private String nazivProizvodjaca;
 	private double jedinicnaCijena;
-	private KategorijaProizvoda kategorijaProizvoda;
-	private Image slika;
+	private String kategorijaProizvoda;
+	private String slika;
 	private String videoURL;
 	private int ocjena;
 	private HashSet<Recenzija> recenzije;
@@ -69,16 +68,16 @@ public class Proizvod {
 	public void setJedinicnaCijena(double jedinicnaCijena) {
 		this.jedinicnaCijena = jedinicnaCijena;
 	}
-	public KategorijaProizvoda getKategorijaProizvoda() {
+	public String getKategorijaProizvoda() {
 		return kategorijaProizvoda;
 	}
-	public void setKategorijaProizvoda(KategorijaProizvoda kategorijaProizvoda) {
+	public void setKategorijaProizvoda(String kategorijaProizvoda) {
 		this.kategorijaProizvoda = kategorijaProizvoda;
 	}
-	public Image getSlika() {
+	public String getSlika() {
 		return slika;
 	}
-	public void setSlika(Image slika) {
+	public void setSlika(String slika) {
 		this.slika = slika;
 	}
 	public String getVideoURL() {

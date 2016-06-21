@@ -31,16 +31,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DodajProizvod</display-name>
-    <servlet-name>DodajProizvod</servlet-name>
-    <servlet-class>servleti.DodajProizvod</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DodajProizvod</servlet-name>
-    <url-pattern>/DodajProizvod</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>DodajKategoriju</display-name>
     <servlet-name>DodajKategoriju</servlet-name>
     <servlet-class>adminServleti.DodajKategoriju</servlet-class>
@@ -58,5 +48,25 @@
   <servlet-mapping>
     <servlet-name>DodajDostavljaca</servlet-name>
     <url-pattern>/DodajDostavljaca</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajProdavnicu</display-name>
+    <servlet-name>DodajProdavnicu</servlet-name>
+    <servlet-class>adminServleti.DodajProdavnicu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajProdavnicu</servlet-name>
+    <url-pattern>/DodajProdavnicu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajProizvod</display-name>
+    <servlet-name>DodajProizvod</servlet-name>
+    <servlet-class>adminServleti.DodajProizvod</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajProizvod</servlet-name>
+    <url-pattern>/DodajProizvod</url-pattern>
   </servlet-mapping>
 </web-app>

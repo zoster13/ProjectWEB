@@ -1,7 +1,5 @@
 package beans;
 
-import java.util.HashSet;
-
 //primjer: posta srbije, fedex, dhl...
 public class Dostavljac {
 
