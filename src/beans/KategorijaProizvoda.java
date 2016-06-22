@@ -1,7 +1,9 @@
 package beans;
 
+import java.io.Serializable;
+
 //primjer: elektronika, odjeca, obuca...
-public class KategorijaProizvoda {
+public class KategorijaProizvoda implements Serializable{
 
 	//Polja
 	private String naziv;		//jedinstven

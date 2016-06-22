@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Xml.SerializationUtil;
 import beans.Dostavljac;
 import kolekcije.Dostavljaci;
 
@@ -26,10 +27,10 @@ public class DodajDostavljaca extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public void init(ServletConfig config)
-    {
-    	config.getServletContext().setAttribute("dostavljaci", new Dostavljaci());
-    }
+//    public void init(ServletConfig config)
+//    {
+//    	config.getServletContext().setAttribute("dostavljaci", new Dostavljaci());
+//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -63,6 +64,11 @@ public class DodajDostavljaca extends HttpServlet {
 			dostavljac.setCijenaPrenosa(tarife);
 			
 			dostavljaci.getDostavljaci().put(sifra, dostavljac);
+			
+			//Serijalizacija - nakon svakog dodavanja novog proizvoda
+			String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\dostavljaci.xml";
+			SerializationUtil.serialize(dostavljaci, fileName);
+			
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Dostavljac je dodat');");
 			out.println("location='admin.jsp';");

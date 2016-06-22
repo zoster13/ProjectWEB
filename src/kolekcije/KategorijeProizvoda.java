@@ -1,11 +1,12 @@
 package kolekcije;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 
 import beans.KategorijaProizvoda;
 
-public class KategorijeProizvoda {
+public class KategorijeProizvoda implements Serializable {
 
 	HashMap<String, KategorijaProizvoda> kategorije;
 	

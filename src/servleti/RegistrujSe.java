@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Xml.SerializationUtil;
 import kolekcije.Korisnici;
 import beans.Korisnik;
 
@@ -30,7 +31,7 @@ public class RegistrujSe extends HttpServlet {
     public void init(ServletConfig config) throws ServletException
     {
     	//Kacenje objekta korisnici na aplikaciju
-    	config.getServletContext().setAttribute("korisnici", new Korisnici());
+    	//config.getServletContext().setAttribute("korisnici", new Korisnici());
     	
     	//Dodaj admina
     	Korisnik admin = new Korisnik();
@@ -46,7 +47,12 @@ public class RegistrujSe extends HttpServlet {
     	admin.setUlogovan(false);
     	
     	Korisnici korisnici = (Korisnici) config.getServletContext().getAttribute("korisnici");
-    	korisnici.getKorisnici().put(admin.getKorisnickoIme(), admin);
+    	
+    	//admin ce biti dodat samo pri prvom pokretanju
+    	if(!korisnici.getKorisnici().containsKey(admin.getKorisnickoIme()))
+    	{
+    		korisnici.getKorisnici().put(admin.getKorisnickoIme(), admin);
+    	}
     }
     
 	/**
@@ -55,8 +61,8 @@ public class RegistrujSe extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		PrintWriter out = response.getWriter();
-		
 		Korisnici koriscnici = (Korisnici) request.getSession().getServletContext().getAttribute("korisnici");
+		String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\korisnici.xml";
 		
 		String username = request.getParameter("korisnickoIme");
 		String pass = request.getParameter("sifra");
@@ -92,7 +98,10 @@ public class RegistrujSe extends HttpServlet {
 			noviKorisnik.setUlogovan(false);
 			
 			//Registruj novog korisnika
-			koriscnici.getKorisnici().put(username, noviKorisnik);	
+			koriscnici.getKorisnici().put(username, noviKorisnik);
+			
+			//Serijalizacija - prilikom dodavanja svakog novog korisnika
+			SerializationUtil.serialize(koriscnici, fileName);
 		
 			RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
 			disp.forward(request, response);		

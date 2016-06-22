@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Xml.SerializationUtil;
 import beans.Prodavnica;
 import kolekcije.Prodavnice;
 
@@ -26,10 +27,10 @@ public class DodajProdavnicu extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public void init(ServletConfig config)
-    {
-    	config.getServletContext().setAttribute("prodavnice", new Prodavnice());
-    }
+//    public void init(ServletConfig config)
+//    {
+//    	config.getServletContext().setAttribute("prodavnice", new Prodavnice());
+//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -65,6 +66,10 @@ public class DodajProdavnicu extends HttpServlet {
 			
 			prodavnice.getProdavnice().put(sifra, prodavnica);
 		
+			//Serijalizacija - nakon svakog dodavanja novog proizvoda
+			String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\prodavnice.xml";
+			SerializationUtil.serialize(prodavnice, fileName);
+			
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Prodavnica je dodata');");
 			out.println("location='admin.jsp';");

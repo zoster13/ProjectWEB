@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Xml.SerializationUtil;
 import beans.KategorijaProizvoda;
 import kolekcije.KategorijeProizvoda;
 
@@ -27,10 +28,10 @@ public class DodajKategoriju extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    public void init(ServletConfig config)
-    {
-    	config.getServletContext().setAttribute("kategorijeProizvoda", new KategorijeProizvoda());
-    }
+//    public void init(ServletConfig config)
+//    {
+//    	config.getServletContext().setAttribute("kategorijeProizvoda", new KategorijeProizvoda());
+//    }
     
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,7 +39,7 @@ public class DodajKategoriju extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
-		KategorijeProizvoda kategorije = (KategorijeProizvoda) request.getSession().getServletContext().getAttribute("kategorijeProizvoda");
+		KategorijeProizvoda kategorije = (KategorijeProizvoda) request.getSession().getServletContext().getAttribute("kategorije");
 		
 		String naziv = request.getParameter("nazivKategorije");
 		String opis = request.getParameter("opisKategorije");
@@ -59,6 +60,10 @@ public class DodajKategoriju extends HttpServlet {
 			kategorija.setPodkategorija(podkategorija);
 		
 			kategorije.getKategorijeProizvoda().put(naziv, kategorija);
+			
+			//Serijalizacija - nakon svakog dodavanja novog proizvoda
+			String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\kategorije.xml";
+			SerializationUtil.serialize(kategorije, fileName);
 			
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Kategorija je dodata');");

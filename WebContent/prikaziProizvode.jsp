@@ -16,8 +16,9 @@
 </head>
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
-
+	 
 	<h2> Trenutni proizvodi: </h2>	
+	<%= proizvodi.getProizvodi().size() %>
 
 	<table border=1px width=100% class="well">
 		<tr>
@@ -49,7 +50,7 @@
 				<td> <%= pr.getJedinicnaCijena() %> </td>
 				<td> <%= pr.getKategorijaProizvoda() %> </td>
 				<td> 
-					<img src="<%= pr.getSlika() %>" alt="<%=pr.getSlika()%>" style="width:50px; height:50px;"> 
+					<img src="C:\\Users\\Rade\\Desktop\\SlikeNovogSada\\<%= pr.getSlika() %>" alt="C:\\Users\\Rade\\Desktop\\SlikeNovogSada\\<%=pr.getSlika()%>" style="width:50px; height:50px;"> 
 				</td>
 				<td> <%= pr.getVideoURL() %> </td>
 				<td> <%= pr.getOcjena() %> </td>

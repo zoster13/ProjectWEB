@@ -1,10 +1,11 @@
 package kolekcije;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import beans.Dostavljac;
 
-public class Dostavljaci {
+public class Dostavljaci implements Serializable {
 
 	private HashMap<String, Dostavljac> dostavljaci;
 	

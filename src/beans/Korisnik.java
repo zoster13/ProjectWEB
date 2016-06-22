@@ -1,6 +1,8 @@
 package beans;
 
-public class Korisnik {
+import java.io.Serializable;
+
+public class Korisnik implements Serializable {
 
 	public enum Uloga {Kupac, Prodavac, Administrator} 
 	

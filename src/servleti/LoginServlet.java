@@ -4,13 +4,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kolekcije.Korisnici;
+import Xml.SerializationUtil;
 import beans.Korisnik;
+import beans.Proizvod;
+import kolekcije.Dostavljaci;
+import kolekcije.KategorijeProizvoda;
+import kolekcije.Korisnici;
+import kolekcije.Prodavnice;
+import kolekcije.Proizvodi;
 
 /**
  * Servlet implementation class LoginServlet
@@ -31,9 +38,41 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+			
+		//Deserijalizacija
+		String fileNameProdavnice = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\prodavnice.xml";
+		String fileNameDostavljaci = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\dostavljaci.xml";
+		String fileNameProizvodi = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\proizvodi.xml";
+		String fileNameKategorije = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\kategorije.xml";
+		String fileNameKorisnici = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\korisnici.xml";
 		
-		//svi korisnici
+		
+		Proizvodi proizvodi = (Proizvodi) request.getSession().getServletContext().getAttribute("proizvodi");
+		KategorijeProizvoda kategorije = (KategorijeProizvoda) request.getSession().getServletContext().getAttribute("kategorije");
+		Prodavnice prodavnice = (Prodavnice) request.getSession().getServletContext().getAttribute("prodavnice");
+		Dostavljaci dostavljaci = (Dostavljaci) request.getSession().getServletContext().getAttribute("dostavljaci");
 		Korisnici korisnici = (Korisnici) request.getSession().getServletContext().getAttribute("korisnici");
+		
+		try {
+			proizvodi = (Proizvodi) SerializationUtil.deserialize(fileNameProizvodi);
+			kategorije = (KategorijeProizvoda) SerializationUtil.deserialize(fileNameKategorije);
+			prodavnice = (Prodavnice) SerializationUtil.deserialize(fileNameProdavnice);
+			dostavljaci = (Dostavljaci) SerializationUtil.deserialize(fileNameDostavljaci);
+			korisnici = (Korisnici) SerializationUtil.deserialize(fileNameKorisnici);
+			
+			request.getSession().getServletContext().setAttribute("proizvodi", proizvodi);
+			request.getSession().getServletContext().setAttribute("kategorije", kategorije);
+			request.getSession().getServletContext().setAttribute("prodavnice", prodavnice);
+			request.getSession().getServletContext().setAttribute("dostavljaci", dostavljaci);
+			request.getSession().getServletContext().setAttribute("korisnici", korisnici);
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//korisnici = (Korisnici) request.getSession().getServletContext().getAttribute("korisnici");
 		
 		String username = request.getParameter("korisnickoIme");
 		String pass = request.getParameter("sifra");

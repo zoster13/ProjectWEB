@@ -1,8 +1,9 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
-public class Prodavnica {
+public class Prodavnica implements Serializable {
 
 	//Polja
 	private String sifra;	//jedinstvena

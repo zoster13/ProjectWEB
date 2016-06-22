@@ -1,7 +1,9 @@
 package beans;
 
+import java.io.Serializable;
+
 //primjer: posta srbije, fedex, dhl...
-public class Dostavljac {
+public class Dostavljac implements Serializable {
 
 	private String sifra;		//jedinstvena
 	private String naziv;
