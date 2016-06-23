@@ -26,6 +26,7 @@
 			<th> Opis: </th>
 			<th> Drzave poslovanja: </th>
 			<th> Tarife(cijene prenosa): </th>
+			<th> &nbsp; </th>
 		</tr>
 		
 		<% for(Dostavljac dost : dostavljaci.getDostavljaci().values()) {%>
@@ -35,6 +36,12 @@
 				<td> <%= dost.getOpis() %> </td>
 				<td> <%= dost.getDrzavePoslovanja() %> </td>
 				<td> <%= dost.getCijenaPrenosa() %> </td>
+				<td>
+					<form action="ObrisiDostavljaca">
+						<input type="hidden" name="sifra" value="<%= dost.getSifra() %>">
+						<input type="submit" value="Obrisi">
+					</form>
+				</td>
 			</tr>
 		<% } %>
 	</table>

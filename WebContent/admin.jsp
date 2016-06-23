@@ -21,5 +21,10 @@
 	<a href="prikaziProdavnice.jsp"> Prikazi prodavnice </a> <br />
 	<a href="prikaziProizvode.jsp"> Prikazi proizvode</a> <br />
 	
+	<br />
+	<br />
+	
+	<a href="prikaziKorisnike.jsp"> Prikazi korisnike</a> <br />
+	
 </body>
 </html>

@@ -30,16 +30,23 @@
 			<th> Recenzije: </th>
 		</tr>
 		
-		<% for(Prodavnica dost : prodavnice.getProdavnice().values()) {%>
+		<% for(Prodavnica prod : prodavnice.getProdavnice().values()) {%>
 			<tr>
-				<td> <%= dost.getSifra() %> </td>
-				<td> <%= dost.getNaziv() %> </td>
-				<td> <%= dost.getAdresa() %> </td>
-				<td> <%= dost.getTelefon() %> </td>
-				<td> <%= dost.getEmail() %> </td>
-				<td> <%= dost.getOdgovorniProdavac() %> </td>
-				<td> <%= dost.getOcjena() %> </td>
-				<td> <%= dost.getRecenzije() %> </td>
+				<td> <%= prod.getSifra() %> </td>
+				<td> <%= prod.getNaziv() %> </td>
+				<td> <%= prod.getAdresa() %> </td>
+				<td> <%= prod.getTelefon() %> </td>
+				<td> <%= prod.getEmail() %> </td>
+				<td> <%= prod.getOdgovorniProdavac() %> </td>
+				<td> <%= prod.getOcjena() %> </td>
+				<td> <%= prod.getRecenzije() %> </td>
+				<td>
+					<form action="ObrisiProdavnicu">
+						<input type="hidden" name="prodavnica" value="<%= prod.getSifra() %>">
+						<input type="submit" value="Obrisi">
+					</form>
+					
+				</td>
 			</tr>
 		<% } %>
 	</table>

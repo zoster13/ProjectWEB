@@ -19,11 +19,12 @@
 
 	<h2> Trenutne kategorije proizvoda: </h2>	
 
-	<table border=1px width=50% class="well">
+	<table border=1px width=100% class="well">
 		<tr>
 			<th> Naziv: </th>
 			<th> Opis: </th>
 			<th> Podkategorija </th>
+			<th> &nbsp; </th>
 		</tr>
 		
 		<% for(KategorijaProizvoda kat : kategorije.getKategorijeProizvoda().values()) {%>
@@ -31,6 +32,19 @@
 				<td> <%= kat.getNaziv() %>
 				<td> <%= kat.getOpis() %>
 				<td> <%= kat.getPodkategorija() %>
+				<td> 
+					<form action="ObrisiKategoriju">
+						<input type="hidden" name="kategorija" value="<%=kat.getNaziv()%>">
+						<input type="submit" value="Obrisi">
+					</form>
+					<form action="ModifikujKategoriju">
+						<input type="hidden" name="naziv" value="<%= kat.getNaziv() %>">
+						<input type="hidden" name="opis" value="<%= kat.getOpis() %>">
+						<input type="hidden" name="podkategorija" value="<%= kat.getPodkategorija() %>">
+	
+						<input type="submit" value="Modifikuj">
+					</form>
+				</td>
 			</tr>
 		<% } %>
 	</table>

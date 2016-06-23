@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<jsp:useBean id="kategorijeProizvoda" class="kolekcije.KategorijeProizvoda" scope="application" />
+<jsp:useBean id="kategorije" class="kolekcije.KategorijeProizvoda" scope="application" />
 <%@page import="beans.KategorijaProizvoda" %>
 
 <html>
@@ -55,7 +55,7 @@
 			<td> 
 				<select name="podkategorija">
 					<option value="nema"> Nema podkategoriju </option>
-					<% for(KategorijaProizvoda kat : kategorijeProizvoda.getKategorijeProizvoda().values()) { %>
+					<% for(KategorijaProizvoda kat : kategorije.getKategorijeProizvoda().values()) { %>
 					<option value="<%= kat.getNaziv()%>"> <%= kat.getNaziv() %> </option>
 					<% } %>
 				</select>	

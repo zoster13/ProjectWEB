@@ -39,7 +39,7 @@ Dodavanje proizvoda, samo admin moze pristupiti
 			</tr>
 			
 			<tr>
-			<% for(Proizvod pr : proizvodi.getProizvodi()) { %>
+			<% for(Proizvod pr : proizvodi.getProizvodi().values()) { %>
 				<td> <%= pr.getSifra() %>	
 				<td> <%= pr.getNaziv() %>	
 				<td> <%= pr.getDimenzije() %>	

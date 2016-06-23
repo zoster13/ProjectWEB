@@ -36,6 +36,7 @@
 			<th> Ocjena: </th>
 			<th> Recenzije: </th>
 			<th> Kolicina u magacinu: </th>
+			<th> &nbsp; </th>
 		</tr>
 		
 		<% for(Proizvod pr : proizvodi.getProizvodi().values()) {%>
@@ -56,6 +57,13 @@
 				<td> <%= pr.getOcjena() %> </td>
 				<td> <%= pr.getRecenzije() %> </td>
 				<td> <%= pr.getKolicinaUMagacinu() %> </td>
+				<td>
+					<form action="ObrisiProizvod">
+						<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
+						<input type="submit" value="Obrisi">
+					</form>
+					
+				</td>
 			</tr>
 		<% } %>
 	</table>
