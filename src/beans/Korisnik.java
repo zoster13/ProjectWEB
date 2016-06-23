@@ -16,7 +16,7 @@ public class Korisnik implements Serializable {
 	private String email;
 	private String adresa;
 	private String drzava;
-	private boolean ulogovan;
+	private boolean ulogovan = false;
 	
 	//Geteri i Seteri za sva polja
 	public String getKorisnickoIme() {
@@ -90,4 +90,5 @@ public class Korisnik implements Serializable {
 	public void setUlogovan(boolean ulogovan) {
 		this.ulogovan = ulogovan;
 	}
+	
 }

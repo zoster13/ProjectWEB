@@ -4,15 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Xml.SerializationUtil;
 import beans.Korisnik;
-import beans.Proizvod;
 import kolekcije.Dostavljaci;
 import kolekcije.KategorijeProizvoda;
 import kolekcije.Korisnici;
@@ -39,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 			
-		//Deserijalizacija
+		//---------------------------Deserijalizacija---------------------------
 		String fileNameProdavnice = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\prodavnice.xml";
 		String fileNameDostavljaci = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\dostavljaci.xml";
 		String fileNameProizvodi = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\proizvodi.xml";
@@ -70,8 +69,7 @@ public class LoginServlet extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		//korisnici = (Korisnici) request.getSession().getServletContext().getAttribute("korisnici");
+		//-------------------------------------------------------------------------------------//
 		
 		String username = request.getParameter("korisnickoIme");
 		String pass = request.getParameter("sifra");
@@ -85,17 +83,22 @@ public class LoginServlet extends HttpServlet {
 				//Admin
 				if(korisnik.getKorisnickoIme().equals("admin") && korisnik.getSifra().equals("admin"))
 				{
+					korisnik.setUlogovan(true);
+					request.getSession().setAttribute("korisnik", korisnik);
+					
 					RequestDispatcher disp = request.getRequestDispatcher("admin.jsp");
 					disp.forward(request, response);
 				}
 				else
 				{
 					//Kupac
+					korisnik.setUlogovan(true);
+					request.getSession().setAttribute("korisnik", korisnik);
+					
 					RequestDispatcher disp = request.getRequestDispatcher("webshop.jsp");
 					disp.forward(request, response);	
 				}
 				
-				korisnik.setUlogovan(true);
 			}
 			else
 			{

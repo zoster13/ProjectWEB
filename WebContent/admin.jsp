@@ -26,5 +26,12 @@
 	
 	<a href="prikaziKorisnike.jsp"> Prikazi korisnike</a> <br />
 	
+	<br />
+	<br />
+	
+	<form action="LogoutServlet">
+		<input type="submit" value="Logout">
+	</form>
+	
 </body>
 </html>

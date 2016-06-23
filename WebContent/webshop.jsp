@@ -10,5 +10,9 @@
 
 Uspjesno ste se ulogovalo na moj WebShop!
 
+	<form action="LogoutServlet">
+		<input type="submit" value="Logout">
+	</form>
+	
 </body>
 </html>
