@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<jsp:useBean id="korisnici" class="kolekcije.Korisnici" scope="application" />
+<%@page import="beans.Korisnik" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -10,8 +14,25 @@
 <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
 </head>
 
+<style>
+table {
+    border: 1px solid lightgrey;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: rgba(230, 230, 230, 0.7);
+}
+
+body{
+	background-image: url("http://wallpaperslabs.com/uploads/images/c/h/e/cheap_wallpaper_online_store_1.jpg");	
+	background-size: 100%;
+}
+</style>
+
 <script type="text/javascript">
-	function Registracija()
+	function Validacija()
 	{	
 		var sifra = document.forms["forma"].sifra.value;
 		var naziv = document.forms["forma"].naziv.value;
@@ -19,6 +40,7 @@
 		var drzava = document.forms["forma"].drzava.value;
 		var telefon = document.forms["forma"].telefon.value;
 		var email = document.forms["forma"].email.value;
+		var prodavac = document.forms["forma"].prodavac.value;
 		
 		if(sifra == null || sifra=="")
 		{
@@ -50,6 +72,11 @@
 			alert ("Unesite email.");
 			return false;
 		}
+		else if(prodavac == null || prodavac=="")
+		{
+			alert ("Izaberite odgovornog prodavca.");
+			return false;
+		}
 		
 		return true;
 	}
@@ -59,10 +86,8 @@
 
 <body>
 <script src="bootstrap/js/bootstrap.js"></script>
- 	
-<h3> Dodavanje nove prodavnice </h3>
 
-<form action="DodajProdavnicu" onsubmit="return Validacija()" name="forma" method="post" class="well">
+<form action="DodajProdavnicu" onsubmit="return Validacija()" name="forma" method="post">
 	<table>
 		<tr>
 			<td align="right"> Sifra: </td>
@@ -86,6 +111,18 @@
 		</tr><tr>
 			<td align="right"> E-mail: </td>
 			<td> <input type="email" name="email"> </td>
+		</tr>
+		<tr>
+			<td align="right"> Odgovorni prodavac: </td>
+			<td> 
+				<select name="prodavac">
+					<% for(Korisnik kor : korisnici.getKorisnici().values()) {
+						if(kor.getUloga().equals(Korisnik.Uloga.Prodavac)) {	
+					%>
+					<option value="<%= kor.getKorisnickoIme() %>"> <%= kor.getKorisnickoIme() %> </option>
+					<% }} %>
+				</select>
+			 </td>
 		</tr>
 		<tr>
 			<td> &nbsp; </td>

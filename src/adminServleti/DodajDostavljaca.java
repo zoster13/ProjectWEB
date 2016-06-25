@@ -61,7 +61,14 @@ public class DodajDostavljaca extends HttpServlet {
 			dostavljac.setNaziv(naziv);
 			dostavljac.setOpis(opis);
 			dostavljac.setDrzavePoslovanja(drzave);
-			dostavljac.setCijenaPrenosa(tarife);
+			try
+			{
+				dostavljac.setCijenaPrenosa(Double.parseDouble(tarife));
+			}
+			catch(Exception ex)
+			{
+				//mora broj
+			}
 			
 			dostavljaci.getDostavljaci().put(sifra, dostavljac);
 			

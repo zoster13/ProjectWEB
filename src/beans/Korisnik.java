@@ -90,5 +90,4 @@ public class Korisnik implements Serializable {
 	public void setUlogovan(boolean ulogovan) {
 		this.ulogovan = ulogovan;
 	}
-	
 }

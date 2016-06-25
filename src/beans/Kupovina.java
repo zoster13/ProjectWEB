@@ -2,14 +2,17 @@ package beans;
 
 import java.util.HashSet;
 
+import kolekcije.ProizvodKolicina;
+import kolekcije.ProizvodKolicinaKolekcija;
+
 //Opisuje kupovinu proizvoda iz prodavnice
 public class Kupovina {
 
 	private String sifra;		//jedinstvena
-	private Korisnik kupac;
-	private Prodavnica prodavnica;
-	private HashSet<Proizvod> proizvodi;
-	private Dostava dostava;
+	private String kupac;
+	private HashSet<String> prodavnice;
+	private ProizvodKolicinaKolekcija proizvodi;
+	private String dostavljac;
 	private double ukupnaCijena;
 	
 	//Geteri i seteri
@@ -19,29 +22,29 @@ public class Kupovina {
 	public void setSifra(String sifra) {
 		this.sifra = sifra;
 	}
-	public Korisnik getKupac() {
+	public String getKupac() {
 		return kupac;
 	}
-	public void setKupac(Korisnik kupac) {
+	public void setKupac(String kupac) {
 		this.kupac = kupac;
 	}
-	public Prodavnica getProdavnica() {
-		return prodavnica;
+	public HashSet<String> getProdavnica() {
+		return prodavnice;
 	}
-	public void setProdavnica(Prodavnica prodavnica) {
-		this.prodavnica = prodavnica;
+	public void setProdavnica(HashSet<String> prodavnice) {
+		this.prodavnice = prodavnice;
 	}
-	public HashSet<Proizvod> getProizvodi() {
+	public ProizvodKolicinaKolekcija getProizvodi() {
 		return proizvodi;
 	}
-	public void setProizvodi(HashSet<Proizvod> proizvodi) {
+	public void setProizvodi(ProizvodKolicinaKolekcija proizvodi) {
 		this.proizvodi = proizvodi;
 	}
-	public Dostava getDostava() {
-		return dostava;
+	public String getDostava() {
+		return dostavljac;
 	}
-	public void setDostava(Dostava dostava) {
-		this.dostava = dostava;
+	public void setDostava(String dostavljac) {
+		this.dostavljac = dostavljac;
 	}
 	public double getUkupnaCijena() {
 		return ukupnaCijena;

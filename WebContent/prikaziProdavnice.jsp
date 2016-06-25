@@ -45,7 +45,10 @@
 						<input type="hidden" name="prodavnica" value="<%= prod.getSifra() %>">
 						<input type="submit" value="Obrisi">
 					</form>
-					
+					<form action="ModifikujProdavnicu">
+						<input type="hidden" name="sifra" value="<%= prod.getSifra() %>">
+						<input type="submit" value="Modifikuj">
+					</form>
 				</td>
 			</tr>
 		<% } %>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Xml.SerializationUtil;
 import beans.Prodavnica;
+import kolekcije.Korisnici;
 import kolekcije.Prodavnice;
 
 /**
@@ -26,11 +27,6 @@ public class DodajProdavnicu extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-//    public void init(ServletConfig config)
-//    {
-//    	config.getServletContext().setAttribute("prodavnice", new Prodavnice());
-//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +42,9 @@ public class DodajProdavnicu extends HttpServlet {
 		String drzava = request.getParameter("drzava");
 		String telefon = request.getParameter("telefon");
 		String email = request.getParameter("email");
+		String prodavac = request.getParameter("prodavac");
 		
+		//Jedinstvena sifra
 		if(prodavnice.getProdavnice().containsKey(sifra))
 		{
 			out.println("<script type=\"text/javascript\">");
@@ -56,24 +54,46 @@ public class DodajProdavnicu extends HttpServlet {
 		}
 		else
 		{
-			Prodavnica prodavnica = new Prodavnica();
-			prodavnica.setSifra(sifra);
-			prodavnica.setNaziv(naziv);
-			prodavnica.setAdresa(adresa);
-			prodavnica.setTelefon(telefon);
-			prodavnica.setEmail(email);
-			prodavnica.setDrzava(drzava);
+			//Jedinstven naziv
+			boolean unique = true;
+			for(Prodavnica prod : prodavnice.getProdavnice().values())
+			{
+				if(prod.getNaziv().equals(naziv))
+				{
+					unique = false;
+					break;
+				}
+			}
 			
-			prodavnice.getProdavnice().put(sifra, prodavnica);
-		
-			//Serijalizacija - nakon svakog dodavanja novog proizvoda
-			String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\prodavnice.xml";
-			SerializationUtil.serialize(prodavnice, fileName);
+			if(unique)
+			{
+				Prodavnica prodavnica = new Prodavnica();
+				prodavnica.setSifra(sifra);
+				prodavnica.setNaziv(naziv);
+				prodavnica.setAdresa(adresa);
+				prodavnica.setTelefon(telefon);
+				prodavnica.setEmail(email);
+				prodavnica.setDrzava(drzava);
+				prodavnica.setOdgovorniProdavac(prodavac);
+				
+				prodavnice.getProdavnice().put(sifra, prodavnica);
 			
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Prodavnica je dodata');");
-			out.println("location='admin.jsp';");
-			out.println("</script>");
+				//Serijalizacija - nakon svakog dodavanja novog proizvoda
+				String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\prodavnice.xml";
+				SerializationUtil.serialize(prodavnice, fileName);
+				
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Prodavnica je dodata');");
+				out.println("location='admin.jsp';");
+				out.println("</script>");
+			}
+			else
+			{
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Prodavnica sa datim nazivom vec postoji!');");
+				out.println("location='dodajProdavnicu.jsp';");
+				out.println("</script>");
+			}
 		}
 	}
 

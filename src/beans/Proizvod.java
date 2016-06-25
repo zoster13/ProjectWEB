@@ -20,6 +20,8 @@ public class Proizvod implements Serializable {
 	private HashSet<Recenzija> recenzije;
 	private int kolicinaUMagacinu;
 	
+	private String prodavnica;
+	
 	//Geteri i seteri za sva polja
 	public String getSifra() {
 		return sifra;
@@ -104,5 +106,11 @@ public class Proizvod implements Serializable {
 	}
 	public void setKolicinaUMagacinu(int kolicinaUMagacinu) {
 		this.kolicinaUMagacinu = kolicinaUMagacinu;
+	}
+	public String getProdavnica() {
+		return prodavnica;
+	}
+	public void setProdavnica(String prodavnica) {
+		this.prodavnica = prodavnica;
 	}
 }

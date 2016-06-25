@@ -12,7 +12,7 @@ public class Prodavnica implements Serializable {
 	private String drzava;
 	private String telefon;
 	private String email;
-	private Korisnik odgovorniProdavac;
+	private String odgovorniProdavac;
 	private int ocjena;
 	private HashSet<Recenzija> recenzije;
 	
@@ -53,10 +53,10 @@ public class Prodavnica implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Korisnik getOdgovorniProdavac() {
+	public String getOdgovorniProdavac() {
 		return odgovorniProdavac;
 	}
-	public void setOdgovorniProdavac(Korisnik odgovorniProdavac) {
+	public void setOdgovorniProdavac(String odgovorniProdavac) {
 		this.odgovorniProdavac = odgovorniProdavac;
 	}
 	public int getOcjena() {

@@ -9,7 +9,7 @@ public class Dostavljac implements Serializable {
 	private String naziv;
 	private String opis;
 	private String drzavePoslovanja;
-	private String cijenaPrenosa;	//zavisi od dimenzije i tezine proizvoda
+	private double cijenaPrenosa=0;	//zavisi od dimenzije i tezine proizvoda
 	
 	//Geteri i seteri za sva polja
 	public String getSifra() {
@@ -36,10 +36,29 @@ public class Dostavljac implements Serializable {
 	public void setDrzavePoslovanja(String drzavePoslovanja) {
 		this.drzavePoslovanja = drzavePoslovanja;
 	}
-	public String getCijenaPrenosa() {
+	public double getCijenaPrenosa() {
 		return cijenaPrenosa;
 	}
-	public void setCijenaPrenosa(String cijenaPrenosa) {
+	public void setCijenaPrenosa(double cijenaPrenosa) {
 		this.cijenaPrenosa = cijenaPrenosa;
+	}
+	
+	public double IzdracunajCijenuDostave(double tezina)
+	{
+		double dostava = 0;
+		int porez = 45;
+		
+		if(tezina < 1)
+			dostava = cijenaPrenosa;
+		else if(tezina < 2)
+			dostava = cijenaPrenosa*2;
+		else if(tezina < 3)
+			dostava = cijenaPrenosa*3;
+		else if(tezina < 4)
+			dostava = cijenaPrenosa*4;
+		else
+			dostava = cijenaPrenosa*5;;
+
+		return dostava + porez;
 	}
 }

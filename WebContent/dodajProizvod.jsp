@@ -1,9 +1,16 @@
+<%@page import="beans.Korisnik.Uloga"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <jsp:useBean id="kategorije" class="kolekcije.KategorijeProizvoda" scope="application" />
 <%@page import="beans.KategorijaProizvoda" %>
+
+<jsp:useBean id="prodavnice" class="kolekcije.Prodavnice" scope="application" />
+<%@page import="beans.Prodavnica" %>
+
+<!-- Trenutno ulogovani korisnik -->
+<jsp:useBean id="korisnik" class="beans.Korisnik" scope="session" />
 
 <html>
 <head>
@@ -25,6 +32,9 @@
 		var proizvodjac = document.forms["forma"].proizvodjac.value;
 		var cijena = document.forms["forma"].cijena.value;
 		var kolicina = document.forms["forma"].kolicina.value;
+		var zemlja = document.forms["forma"].zemlja.value;
+		var prodavnica = document.forms["forma"].prodavnica.value;
+		
 		
 		if(sifra==null||sifra=="")
 		{
@@ -40,15 +50,23 @@
 		{
 			alert("Unesite dimenzije proizvoda");
 			return false;
-		}else if(tezina == null || tezina == "")
+		}
+		else if(tezina == null || tezina == "")
 		{
 			alert("Unesite tezinu proizvoda");
 			return false;
-		}else if(proizvodjac == null || proizvodjac == "")
+		}
+		else if(zemlja == null || zemlja == "")
+		{
+			alert("Unesite zemlju prodizvodjaca proizvoda");
+			return false;
+		}
+		else if(proizvodjac == null || proizvodjac == "")
 		{
 			alert("Unesite proizvodjaca proizvoda");
 			return false;
-		}else if(cijena == null || cijena == "")
+		}
+		else if(cijena == null || cijena == "")
 		{
 			alert("Unesite cijenu proizvoda");
 			return false;
@@ -58,17 +76,36 @@
 			alert("Unesite kolicinu proizvoda");
 			return false;
 		}
-		
+		else if(prodavnica == null || prodavnica == "")
+		{
+			alert("Izaberite prodavnicu. Ukoliko ste prodavac i nemate u ponudi nijednu prodavnicu, znaci da niste ovlasceni da dodajete proizvode.");
+			return false;
+		}
 		return true;
 	}
 </script>
 
+<style>
+table {
+    border: 1px solid lightgrey;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: rgba(230, 230, 230, 0.7);
+}
+
+body{
+	background-image: url("http://wallpaperslabs.com/uploads/images/c/h/e/cheap_wallpaper_online_store_1.jpg");	
+	background-size: 100%;
+}
+</style>
+
 <body>
 <script src="bootstrap/js/bootstrap.js"></script>
- 	
-<h3> Dodavanje novog proizvoda</h3>
 
-<form action="DodajProizvod" onsubmit="return Validacija()" name="forma" method="post" class="well">
+<form action="DodajProizvod" onsubmit="return Validacija()" name="forma" method="post">
 	<table>
 		<tr>
 			<td align="right"> Sifra: </td>
@@ -357,7 +394,7 @@
 			<td align="right"> Kategorija proizvoda: </td>
 			<td> 
 				<select name="kategorija">
-					<option value="nema"> Nema podkategoriju </option>
+					<option value="nema"> Nema kategoriju </option>
 					<% for(KategorijaProizvoda kat : kategorije.getKategorijeProizvoda().values()) { %>
 					<option value="<%= kat.getNaziv()%>"> <%= kat.getNaziv() %> </option>
 					<% } %>
@@ -375,6 +412,27 @@
 		<tr>
 			<td align="right"> Kolicina u magacinu: </td>
 			<td> <input type="text" name="kolicina"> </td>
+		</tr>
+		<tr>
+			<td align="right"> Prodavnica: </td>
+			<td>
+				<select name="prodavnica">
+					<!-- Admin moze dodati svim prodavnicama -->
+					<% if(korisnik.getUloga().equals(Uloga.Administrator)) { %>
+					<% for(Prodavnica prod : prodavnice.getProdavnice().values())  {%>
+						<option value="<%= prod.getNaziv() %>"> <%= prod.getNaziv() %> </option>
+					<% } %>
+					<!-- Prodavac samo prodavnicama za koje je odgovoran -->
+					<% } else { %>
+						<% for(Prodavnica prod : prodavnice.getProdavnice().values())  {%>
+							<% if(prod.getOdgovorniProdavac().equals(korisnik.getKorisnickoIme())) { %>
+								<option value="<%= prod.getNaziv() %>"> <%= prod.getNaziv() %> </option>
+							<% } %>
+						<% } %>
+					<% } %>
+					
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td> &nbsp; </td>

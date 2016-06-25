@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Xml.SerializationUtil;
 import beans.Korisnik;
+import beans.Korisnik.Uloga;
 import kolekcije.Dostavljaci;
 import kolekcije.KategorijeProizvoda;
 import kolekcije.Korisnici;
@@ -37,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-			
+
 		//---------------------------Deserijalizacija---------------------------
 		String fileNameProdavnice = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\prodavnice.xml";
 		String fileNameDostavljaci = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\dostavljaci.xml";
@@ -74,31 +75,42 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("korisnickoIme");
 		String pass = request.getParameter("sifra");
 		
+		//provjera username-a
 		if(korisnici.getKorisnici().containsKey(username))
 		{
 			Korisnik korisnik = korisnici.getKorisnici().get(username);
 		
+			//provjera sifre
 			if(pass.equals(korisnik.getSifra()))
 			{
-				//Admin
-				if(korisnik.getKorisnickoIme().equals("admin") && korisnik.getSifra().equals("admin"))
+				//u zavisnosti od uloge, ide se na odgovarajucu stranu
+				if(korisnik.getUloga().equals(Uloga.Administrator))
 				{
+					//Admin
 					korisnik.setUlogovan(true);
 					request.getSession().setAttribute("korisnik", korisnik);
 					
 					RequestDispatcher disp = request.getRequestDispatcher("admin.jsp");
 					disp.forward(request, response);
 				}
-				else
+				else if(korisnik.getUloga().equals(Uloga.Kupac))
 				{
-					//Kupac
+					//Kupac - jedino kupac moze da kupuje proizvode
 					korisnik.setUlogovan(true);
 					request.getSession().setAttribute("korisnik", korisnik);
 					
 					RequestDispatcher disp = request.getRequestDispatcher("webshop.jsp");
 					disp.forward(request, response);	
 				}
-				
+				else if(korisnik.getUloga().equals(Uloga.Prodavac))
+				{
+					//Prodavac
+					korisnik.setUlogovan(true);
+					request.getSession().setAttribute("korisnik", korisnik);
+					
+					RequestDispatcher disp = request.getRequestDispatcher("prodavac.jsp");
+					disp.forward(request, response);	
+				}
 			}
 			else
 			{

@@ -35,11 +35,6 @@ public class DodajProizvod extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-//    public void init(ServletConfig config)
-//    {
-//    	config.getServletContext().setAttribute("proizvodi", new Proizvodi());
-//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,20 +44,6 @@ public class DodajProizvod extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		Proizvodi proizvodi = (Proizvodi) request.getSession().getServletContext().getAttribute("proizvodi");
-	
-//		//Deserijalizacija - samo na prvom pokretanju programa
-//		if(proizvodi.getProizvodi().size() == 0)
-//		{
-//			Proizvodi stari = new Proizvodi();
-//			try {
-//				stari = (Proizvodi) SerializationUtil.deserialize(fileName);
-//			} catch (ClassNotFoundException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			for(Proizvod pr : stari.getProizvodi().values())
-//				proizvodi.getProizvodi().put(pr.getSifra(), pr);
-//		}
 		
 		String sifra = request.getParameter("sifra");
 		String naziv = request.getParameter("naziv");
@@ -73,6 +54,7 @@ public class DodajProizvod extends HttpServlet {
 		String kategorija = request.getParameter("kategorija");
 		String slika = request.getParameter("slika");
 		String video = request.getParameter("video");
+		String prodavnica = request.getParameter("prodavnica");
 		int kolicina = -1;
 		double cijena = -1;
 		double tezina = -1;
@@ -81,48 +63,50 @@ public class DodajProizvod extends HttpServlet {
 		{
 			kolicina = Integer.parseInt(request.getParameter("kolicina"));
 			cijena = Double.parseDouble(request.getParameter("cijena"));
-			tezina = Double.parseDouble(request.getParameter("tezina"));			
+			tezina = Double.parseDouble(request.getParameter("tezina"));
+			
+			//Jedinstvena sifra
+			if(proizvodi.getProizvodi().containsKey(sifra))
+			{
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Proizvod sa datom sifrom vec postoji!');");
+				out.println("location='dodajProizvod.jsp';");
+				out.println("</script>");
+			}
+			else
+			{
+				Proizvod proizvod = new Proizvod();
+				proizvod.setSifra(sifra);
+				proizvod.setNaziv(naziv);
+				proizvod.setBoja(boja);
+				proizvod.setDimenzije(dimenzije);
+				proizvod.setTezina(tezina);
+				proizvod.setZemljaProizvodnje(zemlja);
+				proizvod.setNazivProizvodjaca(proizvodjac);
+				proizvod.setJedinicnaCijena(cijena);
+				proizvod.setKategorijaProizvoda(kategorija);
+				proizvod.setSlika(slika);
+				proizvod.setVideoURL(video);
+				proizvod.setKolicinaUMagacinu(kolicina);
+				proizvod.setProdavnica(prodavnica);
+				
+				proizvodi.getProizvodi().put(sifra, proizvod);
+				
+				//Serijalizacija - nakon svakog dodavanja novog proizvoda
+				String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\proizvodi.xml";
+				SerializationUtil.serialize(proizvodi, fileName);
+					
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Proizvod je dodat!');");
+				out.println("location='admin.jsp';");
+				out.println("</script>");
+			}
 		}
 		catch(Exception ex)
 		{
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Pogresan unos kolicine, cijene ili tezine. Mora biti broj!');");
 			out.println("location='dodajProizvod.jsp';");
-			out.println("</script>");
-		}
-		
-		if(proizvodi.getProizvodi().containsKey(sifra))
-		{
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Proizvod sa datom sifrom vec postoji!');");
-			out.println("location='dodajProizvod.jsp';");
-			out.println("</script>");
-		}
-		else
-		{
-			Proizvod proizvod = new Proizvod();
-			proizvod.setSifra(sifra);
-			proizvod.setNaziv(naziv);
-			proizvod.setBoja(boja);
-			proizvod.setDimenzije(dimenzije);
-			proizvod.setTezina(tezina);
-			proizvod.setZemljaProizvodnje(zemlja);
-			proizvod.setNazivProizvodjaca(proizvodjac);
-			proizvod.setJedinicnaCijena(cijena);
-			proizvod.setKategorijaProizvoda(kategorija);
-			proizvod.setSlika(slika);
-			proizvod.setVideoURL(video);
-			proizvod.setKolicinaUMagacinu(kolicina);
-			
-			proizvodi.getProizvodi().put(sifra, proizvod);
-			
-			//Serijalizacija - nakon svakog dodavanja novog proizvoda
-			String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\proizvodi.xml";
-			SerializationUtil.serialize(proizvodi, fileName);
-				
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Proizvod je dodat!');");
-			out.println("location='admin.jsp';");
 			out.println("</script>");
 		}
 	}

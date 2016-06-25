@@ -62,7 +62,10 @@
 						<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
 						<input type="submit" value="Obrisi">
 					</form>
-					
+					<form action="ModifikujProizvod">
+						<input type="hidden" name="sifra" value="<%=pr.getSifra()%>">
+						<input type="submit" value="Modifikuj">
+					</form>
 				</td>
 			</tr>
 		<% } %>

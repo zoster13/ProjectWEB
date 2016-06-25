@@ -48,14 +48,29 @@
 	}
 </script>
 
+<style>
+table {
+    border: 1px solid lightgrey;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: rgba(230, 230, 230, 0.7);
+}
+
+body{
+	background-image: url("http://wallpaperslabs.com/uploads/images/c/h/e/cheap_wallpaper_online_store_1.jpg");	
+	background-size: 100%;
+}
+</style>
+
 </head>
 <body>
 
 <script src="bootstrap/js/bootstrap.js"></script>
- 	
-<h3> Dodavanje dostavljaca </h3>
 
-<form action="DodajDostavljaca" name="forma" method="post" class="well">
+<form action="DodajDostavljaca" name="forma" method="post">
 	<table>
 		<tr>
 			<td align="right"> Sifra: </td>
@@ -74,7 +89,7 @@
 			<td> <input type="text" name="drzave"> </td>
 		</tr>
 		<tr>
-			<td align="right"> Tarife(cijene prenosa): </td>
+			<td align="right"> Cijena prenosa(po kilogramu): </td>
 			<td> <input type="text" name="tarifeDostavljaca"> </td>
 		</tr>
 		<tr>

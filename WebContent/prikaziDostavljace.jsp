@@ -41,6 +41,14 @@
 						<input type="hidden" name="sifra" value="<%= dost.getSifra() %>">
 						<input type="submit" value="Obrisi">
 					</form>
+					<form action="ModifikujDostavljaca">
+						<input type="hidden" name="sifra" value="<%= dost.getSifra() %>">
+						<input type="hidden" name="naziv" value="<%= dost.getNaziv() %>">
+						<input type="hidden" name="opis" value="<%= dost.getOpis() %>">
+						<input type="hidden" name="drzave" value="<%= dost.getDrzavePoslovanja() %>">
+						<input type="hidden" name="cijena" value="<%= dost.getCijenaPrenosa() %>">
+						<input type="submit" value="Modifikuj">
+					</form>
 				</td>
 			</tr>
 		<% } %>

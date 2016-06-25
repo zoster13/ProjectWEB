@@ -41,7 +41,6 @@
 						<input type="hidden" name="naziv" value="<%= kat.getNaziv() %>">
 						<input type="hidden" name="opis" value="<%= kat.getOpis() %>">
 						<input type="hidden" name="podkategorija" value="<%= kat.getPodkategorija() %>">
-	
 						<input type="submit" value="Modifikuj">
 					</form>
 				</td>

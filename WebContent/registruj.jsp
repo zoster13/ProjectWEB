@@ -25,6 +25,7 @@
 		var email = document.forms["formaRegistracija"].email.value;
 		var adresa = document.forms["formaRegistracija"].adresa.value;
 		var drzava = document.forms["formaRegistracija"].drzava.value;
+		var uloga = document.forms["formaRegistracija"].uloga.value;
 		
 		if(username == null || username=="")
 		{
@@ -44,6 +45,11 @@
 		else if(prezime == null || prezime=="")
 		{
 			alert ("Unesite prezime.");
+			return false;
+		}
+		else if(uloga == null || uloga=="")
+		{
+			alert ("Izaberite ulogu.");
 			return false;
 		}
 		else if(telefon == null || telefon=="")
@@ -70,12 +76,31 @@
 		return true;
 	}
 </script>
+
+<style>
+table {
+    border: 1px solid lightgrey;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: rgba(230, 230, 230, 0.7);
+}
+
+body{
+	background-image: url("http://wallpaperslabs.com/uploads/images/c/h/e/cheap_wallpaper_online_store_1.jpg");	
+	background-size: 100%;
+}
+</style>
+
+
 </head>
 
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
 	
-	<form action="RegistrujSe" onsubmit="return Registracija();" method="post" name="formaRegistracija" class="well">
+	<form action="RegistrujSe" onsubmit="return Registracija();" method="post" name="formaRegistracija">
 		<table cellspacing=0 cellpadding=3 border=0>
 			<tr>
 				<td align=right>Korisnicko ime:</td>
@@ -92,7 +117,7 @@
 			<tr>
 				<td align=right>Prezime:</td>
 				<td><input type="text" name="prezime"></td>
-			</tr>
+			</tr> 
 			<tr>
 				<td align=right>Uloga:</td>
 				<td>
@@ -122,6 +147,7 @@
 				<td align=right>&nbsp;</td>
 				<td>
 					<input type="submit" value="Registruj se" class="btn btn-success">
+					<a href="index.jsp" class="btn btn-danger">Odustani</a>
 				</td>
 			</tr>
 			</table>

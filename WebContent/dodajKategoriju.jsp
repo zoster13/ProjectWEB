@@ -33,14 +33,29 @@
 	}
 </script>
 
+<style>
+table {
+    border: 1px solid lightgrey;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: rgba(230, 230, 230, 0.7);
+}
+
+body{
+	background-image: url("http://wallpaperslabs.com/uploads/images/c/h/e/cheap_wallpaper_online_store_1.jpg");	
+	background-size: 100%;
+}
+</style>
+
 </head>
 
 <body>
 <script src="bootstrap/js/bootstrap.js"></script>
- 	
-<h3> Dodavanje nove kategorije proizvoda </h3>
 
-<form action="DodajKategoriju" onsubmit="return Validacija()" name="forma" method="post" class="well">
+<form action="DodajKategoriju" onsubmit="return Validacija()" name="forma" method="post">
 	<table>
 		<tr>
 			<td align="right"> Naziv: </td>
@@ -48,7 +63,7 @@
 		</tr>
 		<tr>
 			<td align="right"> Opis: </td>
-			<td> <input type="text" name="opisKategorije"> </td>
+			<td> <input type="text" name="opisKategorije" > </td>
 		</tr>
 		<tr>
 			<td align="right"> Podkategorija: </td>
