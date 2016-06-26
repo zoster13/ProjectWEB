@@ -438,7 +438,13 @@ body{
 			<td> &nbsp; </td>
 			<td align="center"> 
 				<input type="submit" value="Dodaj" class="btn btn-success"> 
-				<a href="admin.jsp" class="btn btn-danger">Odustani</a>	
+				
+				<% if(korisnik.getUloga().equals(Uloga.Administrator)) {%>
+					<a href="admin.jsp" class="btn btn-danger">Odustani</a>	
+				<% } else { %>
+					<a href="prodavac.jsp" class="btn btn-danger">Odustani</a>	
+				<% } %>
+				
 			</td>
 		</tr>
 		

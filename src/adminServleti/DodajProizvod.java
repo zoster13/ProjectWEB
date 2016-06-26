@@ -1,25 +1,17 @@
 package adminServleti;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Xml.SerializationUtil;
+import beans.Korisnik;
 import beans.Proizvod;
+import beans.Korisnik.Uloga;
 import kolekcije.Proizvodi;
 
 /**
@@ -95,11 +87,24 @@ public class DodajProizvod extends HttpServlet {
 				//Serijalizacija - nakon svakog dodavanja novog proizvoda
 				String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\proizvodi.xml";
 				SerializationUtil.serialize(proizvodi, fileName);
+				
+				//Trenutno ulogovani korisnik
+				Korisnik korisnik = (Korisnik) request.getSession().getAttribute("korisnik");
+				
+				if(korisnik.getUloga().equals(Uloga.Administrator))
+				{
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('Proizvod je dodat!');");
+					out.println("location='admin.jsp';");
+					out.println("</script>");
+				}else if(korisnik.getUloga().equals(Uloga.Prodavac))
+				{
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('Proizvod je dodat!');");
+					out.println("location='prodavac.jsp';");
+					out.println("</script>");
 					
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Proizvod je dodat!');");
-				out.println("location='admin.jsp';");
-				out.println("</script>");
+				}
 			}
 		}
 		catch(Exception ex)
