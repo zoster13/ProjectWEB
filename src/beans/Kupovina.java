@@ -1,18 +1,20 @@
 package beans;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 
-import kolekcije.ProizvodKolicina;
 import kolekcije.ProizvodKolicinaKolekcija;
 
 //Opisuje kupovinu proizvoda iz prodavnice
-public class Kupovina {
+public class Kupovina implements Serializable {
 
 	private String sifra;		//jedinstvena
 	private String kupac;
-	private HashSet<String> prodavnice;
+	private ArrayList<String> prodavnice;
 	private ProizvodKolicinaKolekcija proizvodi;
 	private String dostavljac;
+	private double cijenaDostave;
 	private double ukupnaCijena;
 	
 	//Geteri i seteri
@@ -28,10 +30,10 @@ public class Kupovina {
 	public void setKupac(String kupac) {
 		this.kupac = kupac;
 	}
-	public HashSet<String> getProdavnica() {
+	public ArrayList<String> getProdavnica() {
 		return prodavnice;
 	}
-	public void setProdavnica(HashSet<String> prodavnice) {
+	public void setProdavnica(ArrayList<String> prodavnice) {
 		this.prodavnice = prodavnice;
 	}
 	public ProizvodKolicinaKolekcija getProizvodi() {
@@ -51,5 +53,11 @@ public class Kupovina {
 	}
 	public void setUkupnaCijena(double ukupnaCijena) {
 		this.ukupnaCijena = ukupnaCijena;
+	}
+	public double getCijenaDostave() {
+		return cijenaDostave;
+	}
+	public void setCijenaDostave(double cijenaDostave) {
+		this.cijenaDostave = cijenaDostave;
 	}
 }

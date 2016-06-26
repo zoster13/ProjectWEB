@@ -66,7 +66,11 @@
 	</table>
 
 	<a href="korpa.jsp"> Trenutni sadrzaj korpe </a>
-
+	
+	<form action="IstorijaKupovineServlet">
+		<input type="submit" value="Prikazi istoriju kupovine">
+	</form>
+	
 	<form action="LogoutServlet">
 		<input type="submit" value="Logout">
 	</form>

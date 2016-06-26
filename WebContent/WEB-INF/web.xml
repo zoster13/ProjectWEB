@@ -239,4 +239,14 @@
     <servlet-name>SacuvajIzmjenuProizvoda</servlet-name>
     <url-pattern>/SacuvajIzmjenuProizvoda</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IstorijaKupovineServlet</display-name>
+    <servlet-name>IstorijaKupovineServlet</servlet-name>
+    <servlet-class>kupovina.IstorijaKupovineServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IstorijaKupovineServlet</servlet-name>
+    <url-pattern>/IstorijaKupovineServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
