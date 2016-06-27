@@ -299,4 +299,14 @@
     <servlet-name>SnimiIzmjenuRecenzije</servlet-name>
     <url-pattern>/SnimiIzmjenuRecenzije</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OcjeniRecenzijuServlet</display-name>
+    <servlet-name>OcjeniRecenzijuServlet</servlet-name>
+    <servlet-class>recenzije.OcjeniRecenzijuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OcjeniRecenzijuServlet</servlet-name>
+    <url-pattern>/OcjeniRecenzijuServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -86,11 +86,6 @@
 			</tr>
 			<% } %>
 		<% } %>
-		
-		<!-- Odredjivanje prodavnice za koju je prodavac odgovoran -->
-		<%
-			
-		%>
 			
 		<!-- Prodavac, samo proizvodi onih prodavnice za koje je odgovoran -->
 		<%if(korisnik.getUloga().equals(Uloga.Prodavac)) { %>
@@ -119,9 +114,14 @@
 								</td>
 								<td> <%= pr.getVideoURL() %> </td>
 								<td> <%= pr.getOcjena() %> </td>
-								<td> <%= pr.getRecenzije() %> </td>
 								<td> <%= pr.getKolicinaUMagacinu() %> </td>
 								<td> <%= pr.getProdavnica() %> </td>
+								<td> 
+									<form action="PrikaziRecenzijeServlet">
+										<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
+										<input type="submit" value="Prikazi recenzije">	
+									</form>
+								</td>
 								<td>
 									<form action="ObrisiProizvod">
 										<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
