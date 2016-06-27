@@ -1,11 +1,12 @@
 package beans;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
-public class Recenzija {
+public class Recenzija implements Serializable {
 
 	private String sifra;		//jedinstvena
-	private Korisnik korisnik;
+	private String korisnik;
 	private Date datum;
 	private int ocjena;
 	private String komentar;
@@ -17,10 +18,10 @@ public class Recenzija {
 	public void setSifra(String sifra) {
 		this.sifra = sifra;
 	}
-	public Korisnik getKorisnik() {
+	public String getKorisnik() {
 		return korisnik;
 	}
-	public void setKorisnik(Korisnik korisnik) {
+	public void setKorisnik(String korisnik) {
 		this.korisnik = korisnik;
 	}
 	public Date getDatum() {

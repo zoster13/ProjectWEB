@@ -249,4 +249,54 @@
     <servlet-name>IstorijaKupovineServlet</servlet-name>
     <url-pattern>/IstorijaKupovineServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PrikaziRecenzijeServlet</display-name>
+    <servlet-name>PrikaziRecenzijeServlet</servlet-name>
+    <servlet-class>recenzije.PrikaziRecenzijeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrikaziRecenzijeServlet</servlet-name>
+    <url-pattern>/PrikaziRecenzijeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajRecenzijuServlet</display-name>
+    <servlet-name>DodajRecenzijuServlet</servlet-name>
+    <servlet-class>recenzije.DodajRecenzijuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajRecenzijuServlet</servlet-name>
+    <url-pattern>/DodajRecenzijuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ObrisiRecenzijuServlet</display-name>
+    <servlet-name>ObrisiRecenzijuServlet</servlet-name>
+    <servlet-class>recenzije.ObrisiRecenzijuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ObrisiRecenzijuServlet</servlet-name>
+    <url-pattern>/ObrisiRecenzijuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IzmjeniRecenzijuServlet</display-name>
+    <servlet-name>IzmjeniRecenzijuServlet</servlet-name>
+    <servlet-class>recenzije.IzmjeniRecenzijuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IzmjeniRecenzijuServlet</servlet-name>
+    <url-pattern>/IzmjeniRecenzijuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SnimiIzmjenuRecenzije</display-name>
+    <servlet-name>SnimiIzmjenuRecenzije</servlet-name>
+    <servlet-class>recenzije.SnimiIzmjenuRecenzije</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SnimiIzmjenuRecenzije</servlet-name>
+    <url-pattern>/SnimiIzmjenuRecenzije</url-pattern>
+  </servlet-mapping>
 </web-app>

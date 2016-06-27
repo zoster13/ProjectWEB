@@ -41,9 +41,9 @@
 			<th> Slika: </th>
 			<th> Video: </th>
 			<th> Ocjena: </th>
-			<th> Recenzije: </th>
 			<th> Kolicina u magacinu: </th>
 			<th> Prodavnica: </th>
+			<th> Recenzije: </th>
 			<th> &nbsp; </th>
 		</tr>
 		
@@ -65,9 +65,14 @@
 				</td>
 				<td> <%= pr.getVideoURL() %> </td>
 				<td> <%= pr.getOcjena() %> </td>
-				<td> <%= pr.getRecenzije() %> </td>
 				<td> <%= pr.getKolicinaUMagacinu() %> </td>
 				<td> <%= pr.getProdavnica() %> </td>
+				<td> 
+					<form action="PrikaziRecenzijeServlet">
+						<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
+						<input type="submit" value="Prikazi recenzije">	
+					</form>
+				</td>
 				<td>
 					<form action="ObrisiProizvod">
 						<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">

@@ -3,6 +3,8 @@ package beans;
 import java.io.Serializable;
 import java.util.HashSet;
 
+import recenzije.ListaRecenzija;
+
 public class Proizvod implements Serializable {
 
 	private String sifra;		//jedinstvena
@@ -17,7 +19,7 @@ public class Proizvod implements Serializable {
 	private String slika;
 	private String videoURL;
 	private int ocjena;
-	private HashSet<Recenzija> recenzije;
+	private ListaRecenzija recenzije;
 	private int kolicinaUMagacinu;
 	
 	private String prodavnica;
@@ -95,10 +97,10 @@ public class Proizvod implements Serializable {
 	public void setOcjena(int ocjena) {
 		this.ocjena = ocjena;
 	}
-	public HashSet<Recenzija> getRecenzije() {
+	public ListaRecenzija getRecenzije() {
 		return recenzije;
 	}
-	public void setRecenzije(HashSet<Recenzija> recenzije) {
+	public void setRecenzije(ListaRecenzija recenzije) {
 		this.recenzije = recenzije;
 	}
 	public int getKolicinaUMagacinu() {
