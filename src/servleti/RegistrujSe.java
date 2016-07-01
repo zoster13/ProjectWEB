@@ -103,8 +103,10 @@ public class RegistrujSe extends HttpServlet {
 			//Serijalizacija - prilikom dodavanja svakog novog korisnika
 			SerializationUtil.serialize(koriscnici, fileName);
 		
-			RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
-			disp.forward(request, response);		
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Uspjesno ste se registrovali');");
+			out.println("location='index.jsp';");
+			out.println("</script>");			
 		}
 	}
 

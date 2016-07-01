@@ -15,13 +15,25 @@
 <!-- Bootstrap -->
 <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
 
+<style>
+table,h1 {
+    border: 1px solid lightgrey;
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+body{
+	background-image: url("http://static1.squarespace.com/static/5431c376e4b010fc5fa309dd/t/56551d1de4b0f06765d5d2f2/1448418591090/banner-ecommerce-blue.jpg?format=1500w");	
+	background-size: 100%;
+}
+</style>
+
 </head>
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
 
 	<h2> Trenutne prodavnice: </h2>	
 
-	<table border=1px width=100% class="well">
+	<table border=1px width=70%>
 		<tr>
 			<th> Sifra: </th>
 			<th> Naziv: </th>
@@ -48,11 +60,11 @@
 				<td>
 					<form action="ObrisiProdavnicu">
 						<input type="hidden" name="prodavnica" value="<%= prod.getSifra() %>">
-						<input type="submit" value="Obrisi">
+						<input type="submit" value="Obrisi" class="btn btn-success">
 					</form>
 					<form action="ModifikujProdavnicu">
 						<input type="hidden" name="sifra" value="<%= prod.getSifra() %>">
-						<input type="submit" value="Modifikuj">
+						<input type="submit" value="Modifikuj" class="btn btn-success">
 					</form>
 				</td>
 			</tr>
@@ -76,7 +88,7 @@
 					<!-- Prodavac moze samo da modifikuje -->
 					<form action="ModifikujProdavnicu">
 						<input type="hidden" name="sifra" value="<%= prod.getSifra() %>">
-						<input type="submit" value="Modifikuj">
+						<input type="submit" value="Modifikuj" class="btn btn-success">
 					</form>
 				</td>
 			</tr>
@@ -86,9 +98,9 @@
 	</table>
 
 	<% if(korisnik.getUloga().equals(Uloga.Administrator)) { %>
-		<a href="admin.jsp"> Nazad </a>
+		<a href="admin.jsp" class="btn btn-danger"> Nazad </a>
 	<% } else if(korisnik.getUloga().equals(Uloga.Prodavac)) {%>
-		<a href="prodavac.jsp"> Nazad </a>
+		<a href="prodavac.jsp" class="btn btn-danger"> Nazad </a>
 	<% } %>
 </body>
 </html>

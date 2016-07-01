@@ -83,7 +83,7 @@
     <description></description>
     <display-name>ModifikujKategoriju</display-name>
     <servlet-name>ModifikujKategoriju</servlet-name>
-    <servlet-class>adminServleti.ModifikujKategoriju</servlet-class>
+    <servlet-class>servletiModifikacija.ModifikujKategoriju</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ModifikujKategoriju</servlet-name>
@@ -309,4 +309,47 @@
     <servlet-name>OcjeniRecenzijuServlet</servlet-name>
     <url-pattern>/OcjeniRecenzijuServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetKorpa</display-name>
+    <servlet-name>GetKorpa</servlet-name>
+    <servlet-class>kupovina.GetKorpa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetKorpa</servlet-name>
+    <url-pattern>/GetKorpa</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetKupovina</display-name>
+    <servlet-name>GetKupovina</servlet-name>
+    <servlet-class>kupovina.GetKupovina</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetKupovina</servlet-name>
+    <url-pattern>/GetKupovina</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>MyWebShop</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StaviNaAkciju</display-name>
+    <servlet-name>StaviNaAkciju</servlet-name>
+    <servlet-class>akcija.StaviNaAkciju</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StaviNaAkciju</servlet-name>
+    <url-pattern>/StaviNaAkciju</url-pattern>
+  </servlet-mapping>  
 </web-app>

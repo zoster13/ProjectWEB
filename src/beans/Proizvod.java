@@ -21,6 +21,7 @@ public class Proizvod implements Serializable {
 	private int ocjena;
 	private ListaRecenzija recenzije;
 	private int kolicinaUMagacinu;
+	private Akcija akcija;
 	
 	private String prodavnica;
 	
@@ -115,4 +116,22 @@ public class Proizvod implements Serializable {
 	public void setProdavnica(String prodavnica) {
 		this.prodavnica = prodavnica;
 	}
+	public Akcija getAkcija() {
+		return akcija;
+	}
+	public void setAkcija(Akcija akcija) {
+		this.akcija = akcija;
+	}
+	
+	public double getSnizenaCijena()
+	{
+		if(akcija != null)
+		{
+			double snizenje = (double)jedinicnaCijena*akcija.snizenje;
+			return jedinicnaCijena - snizenje;
+		}
+		
+		return -1;
+	}
+	
 }

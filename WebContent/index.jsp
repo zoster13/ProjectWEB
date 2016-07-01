@@ -1,10 +1,10 @@
-<%@page import="beans.Korisnik.Uloga"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <jsp:useBean id="korisnik" class="beans.Korisnik" scope="session" />
+<%@page import="beans.Korisnik.Uloga"%>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -21,11 +21,10 @@ table,h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     
-    background-color: rgba(230, 230, 230, 0.7);
+    background-color: rgba(230, 230, 230, 0.3);
 }
-
 body{
-	background-image: url("http://wallpaperslabs.com/uploads/images/c/h/e/cheap_wallpaper_online_store_1.jpg");	
+	background-image: url("http://static1.squarespace.com/static/5431c376e4b010fc5fa309dd/t/56551d1de4b0f06765d5d2f2/1448418591090/banner-ecommerce-blue.jpg?format=1500w");	
 	background-size: 100%;
 }
 </style>
@@ -48,13 +47,14 @@ body{
 			</tr>
 			<tr>
 				<td align=right>&nbsp;</td>
-				<td>
+				<td align="center">
 					<input type="submit" value="Prijavi se" class="btn btn-success">
 					<a href="registruj.jsp" class="btn btn-danger"> Registruj se </a>
 				</td>
 			</tr>
 		</table>
 	</form>
+	
 	<% } else { %>
 		<% 
 		RequestDispatcher disp = null;
@@ -71,7 +71,6 @@ body{
 		{
 			disp = request.getRequestDispatcher("prodavac.jsp");
 		}
-		
 		disp.forward(request, response);
 		%>
 	<% } %>
