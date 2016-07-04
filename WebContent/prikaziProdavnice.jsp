@@ -31,18 +31,23 @@ body{
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
 
-	<h2> Trenutne prodavnice: </h2>	
-
 	<table border=1px width=70%>
 		<tr>
 			<th> Sifra: </th>
 			<th> Naziv: </th>
 			<th> Adresa: </th>
+			<th> Drzava: </th>
 			<th> Telefon: </th>
 			<th> Email: </th>
 			<th> Odgovorni prodavac: </th>
 			<th> Ocjena: </th>
 			<th> Recenzije: </th>
+			<% if(korisnik.getUloga().equals(Uloga.Administrator)) {%>
+			<th> Obrisi: </th>
+			<th> Modifikuj: </th>
+			<% }else { %>
+			<th> Modifikuj: </th>
+			<%} %>
 		</tr>
 		
 		<!-- ADMIN - moze i da brise i da modifikuje-->
@@ -52,6 +57,7 @@ body{
 				<td> <%= prod.getSifra() %> </td>
 				<td> <%= prod.getNaziv() %> </td>
 				<td> <%= prod.getAdresa() %> </td>
+				<td> <%= prod.getDrzava() %>
 				<td> <%= prod.getTelefon() %> </td>
 				<td> <%= prod.getEmail() %> </td>
 				<td> <%= prod.getOdgovorniProdavac() %> </td>
@@ -62,6 +68,8 @@ body{
 						<input type="hidden" name="prodavnica" value="<%= prod.getSifra() %>">
 						<input type="submit" value="Obrisi" class="btn btn-success">
 					</form>
+				</td>
+				<td>
 					<form action="ModifikujProdavnicu">
 						<input type="hidden" name="sifra" value="<%= prod.getSifra() %>">
 						<input type="submit" value="Modifikuj" class="btn btn-success">
@@ -79,6 +87,7 @@ body{
 				<td> <%= prod.getSifra() %> </td>
 				<td> <%= prod.getNaziv() %> </td>
 				<td> <%= prod.getAdresa() %> </td>
+				<td> <%= prod.getDrzava() %>			
 				<td> <%= prod.getTelefon() %> </td>
 				<td> <%= prod.getEmail() %> </td>
 				<td> <%= prod.getOdgovorniProdavac() %> </td>

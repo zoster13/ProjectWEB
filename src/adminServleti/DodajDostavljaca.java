@@ -26,11 +26,6 @@ public class DodajDostavljaca extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-//    public void init(ServletConfig config)
-//    {
-//    	config.getServletContext().setAttribute("dostavljaci", new Dostavljaci());
-//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +39,7 @@ public class DodajDostavljaca extends HttpServlet {
 		String sifra = request.getParameter("sifraDostavljaca");
 		String naziv = request.getParameter("nazivDostavljaca");
 		String opis = request.getParameter("opisDostavljaca");
-		String drzave = request.getParameter("drzave");
+		String[] drzave = request.getParameterValues("drzave");
 		String tarife = request.getParameter("tarifeDostavljaca");
 		
 		if(dostavljaci.getDostavljaci().containsKey(sifra))
@@ -64,22 +59,26 @@ public class DodajDostavljaca extends HttpServlet {
 			try
 			{
 				dostavljac.setCijenaPrenosa(Double.parseDouble(tarife));
+				
+				dostavljaci.getDostavljaci().put(sifra, dostavljac);
+				
+				//Serijalizacija - nakon svakog dodavanja novog proizvoda
+				String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\dostavljaci.xml";
+				SerializationUtil.serialize(dostavljaci, fileName);
+				
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Dostavljac je dodat');");
+				out.println("location='admin.jsp';");
+				out.println("</script>");
 			}
 			catch(Exception ex)
 			{
 				//mora broj
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Pogresan unos tarife. Mora biti broj!');");
+				out.println("location='dodajDostavljaca.jsp';");
+				out.println("</script>");
 			}
-			
-			dostavljaci.getDostavljaci().put(sifra, dostavljac);
-			
-			//Serijalizacija - nakon svakog dodavanja novog proizvoda
-			String fileName = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\dostavljaci.xml";
-			SerializationUtil.serialize(dostavljaci, fileName);
-			
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Dostavljac je dodat');");
-			out.println("location='admin.jsp';");
-			out.println("</script>");
 		}
 	}
 

@@ -14,8 +14,8 @@
 <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
 
 <style>
-table,h1 {
-    border: 1px solid lightgrey;    
+table {
+	border: 1px solid lightgrey;       
     background-color: rgba(230, 230, 230, 0.5);
 }
 
@@ -29,33 +29,34 @@ body{
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
 
-	<h2> Trenutne kategorije proizvoda: </h2>	
-
 	<table border=1px width=70% align="left">
 		<tr>
 			<th> Naziv: </th>
 			<th> Opis: </th>
 			<th> Podkategorija </th>
-			<th> &nbsp; </th>
+			<th> Brisanje </th>
+			<th> Modifikacija </th>
 		</tr>
 		
 		<% for(KategorijaProizvoda kat : kategorije.getKategorijeProizvoda().values()) {%>
 			<tr>
-				<td> <%= kat.getNaziv() %>
-				<td> <%= kat.getOpis() %>
-				<td> <%= kat.getPodkategorija() %>
-				<td> 
+				<td> <%= kat.getNaziv() %> </td>
+				<td> <%= kat.getOpis() %> </td>
+				<td> <%= kat.getPodkategorija() %></td>
+				<td align="center"> 
 					<form action="ObrisiKategoriju">
 						<input type="hidden" name="kategorija" value="<%=kat.getNaziv()%>">
 						<input type="submit" value="Obrisi" class="btn btn-success">
 					</form>
+				</td>
+				<td align="center">	
 					<form action="ModifikujKategoriju">
 						<input type="hidden" name="naziv" value="<%= kat.getNaziv() %>">
 						<input type="hidden" name="opis" value="<%= kat.getOpis() %>">
 						<input type="hidden" name="podkategorija" value="<%= kat.getPodkategorija() %>">
 						<input type="submit" value="Modifikuj" class="btn btn-success">
 					</form>
-				</td>
+				</td>	
 			</tr>
 		<% } %>
 	</table>

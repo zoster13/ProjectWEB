@@ -1,5 +1,6 @@
 package adminServleti;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -71,7 +72,7 @@ public class DodajProizvod extends HttpServlet {
 				proizvod.setSifra(sifra);
 				proizvod.setNaziv(naziv);
 				proizvod.setBoja(boja);
-				proizvod.setDimenzije(dimenzije);
+				//proizvod.setDimenzije(dimenzije);
 				proizvod.setTezina(tezina);
 				proizvod.setZemljaProizvodnje(zemlja);
 				proizvod.setNazivProizvodjaca(proizvodjac);
@@ -81,6 +82,24 @@ public class DodajProizvod extends HttpServlet {
 				proizvod.setVideoURL(video);
 				proizvod.setKolicinaUMagacinu(kolicina);
 				proizvod.setProdavnica(prodavnica);
+				switch(dimenzije)
+				{
+					case "1":
+						proizvod.setDimenzije(new Point(20,20));
+						break;
+					case "2":
+						proizvod.setDimenzije(new Point(50,50));
+						break;
+					case "3":
+						proizvod.setDimenzije(new Point(100,100));
+						break;
+					case "4":
+						proizvod.setDimenzije(new Point(500,500));
+						break;
+					case "5":
+						proizvod.setDimenzije(new Point(1000,1000));
+						break;
+				}
 				
 				proizvodi.getProizvodi().put(sifra, proizvod);
 				

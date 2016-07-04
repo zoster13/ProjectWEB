@@ -11,7 +11,7 @@ public class Recenzija implements Serializable {
 	private Date datum;
 	private int ocjenaProizvoda;
 	private String komentar;
-	private ArrayList<Integer> ocjenaRecenzije;
+	private ArrayList<Integer> ocjenaRecenzije = new ArrayList<Integer>();
 	
 	//Geteri i seteri za sva polja
 	public String getSifra() {
@@ -67,6 +67,6 @@ public class Recenzija implements Serializable {
 			count++;
 		}
 		
-		return (double)sum/count;
+		return (double)sum/(count);
 	}
 }

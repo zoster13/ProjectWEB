@@ -11,7 +11,7 @@ public class Kupovina implements Serializable {
 
 	private String sifra;		//jedinstvena
 	private String kupac;
-	private ArrayList<String> prodavnice;
+	//private ArrayList<String> prodavnice;
 	private ProizvodKolicinaKolekcija proizvodi;
 	private String dostavljac;
 	private double cijenaDostave;
@@ -30,12 +30,12 @@ public class Kupovina implements Serializable {
 	public void setKupac(String kupac) {
 		this.kupac = kupac;
 	}
-	public ArrayList<String> getProdavnica() {
-		return prodavnice;
-	}
-	public void setProdavnica(ArrayList<String> prodavnice) {
-		this.prodavnice = prodavnice;
-	}
+//	public ArrayList<String> getProdavnica() {
+//		return prodavnice;
+//	}
+//	public void setProdavnica(ArrayList<String> prodavnice) {
+//		this.prodavnice = prodavnice;
+//	}
 	public ProizvodKolicinaKolekcija getProizvodi() {
 		return proizvodi;
 	}

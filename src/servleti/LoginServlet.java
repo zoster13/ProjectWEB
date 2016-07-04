@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -83,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 			//provjera sifre
 			if(pass.equals(korisnik.getSifra()))
 			{
-				//u zavisnosti od uloge, ide se na odgovarajucu stranu
+				//u zavisnosti od uloge, ide se na odgovarajucu stranicu
 				if(korisnik.getUloga().equals(Uloga.Administrator))
 				{
 					//Admin
@@ -99,7 +98,7 @@ public class LoginServlet extends HttpServlet {
 					korisnik.setUlogovan(true);
 					request.getSession().setAttribute("korisnik", korisnik);
 					
-					RequestDispatcher disp = request.getRequestDispatcher("webshop.jsp");
+					RequestDispatcher disp = request.getRequestDispatcher("kupac.jsp");
 					disp.forward(request, response);	
 				}
 				else if(korisnik.getUloga().equals(Uloga.Prodavac))

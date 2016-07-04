@@ -14,10 +14,8 @@
 <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
 
 <style>
-table,h1 {
-    border: 1px solid lightgrey;
-
-    
+table {
+	border: 1px solid lightgrey;       
     background-color: rgba(230, 230, 230, 0.5);
 }
 
@@ -31,8 +29,6 @@ body{
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
 
-	<h2> Trenutni dostavljaci: </h2>	
-
 	<table border=1px width=70%>
 		<tr>
 			<th> Sifra: </th>
@@ -40,7 +36,8 @@ body{
 			<th> Opis: </th>
 			<th> Drzave poslovanja: </th>
 			<th> Tarife(cijene prenosa): </th>
-			<th> &nbsp; </th>
+			<th> Obrisi </th>
+			<th> Modifikuj </th>
 		</tr>
 		
 		<% for(Dostavljac dost : dostavljaci.getDostavljaci().values()) {%>
@@ -48,13 +45,21 @@ body{
 				<td> <%= dost.getSifra() %> </td>
 				<td> <%= dost.getNaziv() %> </td>
 				<td> <%= dost.getOpis() %> </td>
-				<td> <%= dost.getDrzavePoslovanja() %> </td>
+				<td> 
+					<ul>
+					<% for(String drzava : dost.getDrzavePoslovanja()) {%>
+						<li> <%=drzava%> </li>
+					<% } %>
+					</ul>
+				</td>
 				<td> <%= dost.getCijenaPrenosa() %> </td>
 				<td>
 					<form action="ObrisiDostavljaca">
 						<input type="hidden" name="sifra" value="<%= dost.getSifra() %>">
 						<input type="submit" value="Obrisi" class="btn btn-success">
 					</form>
+				</td>
+				<td>
 					<form action="ModifikujDostavljaca">
 						<input type="hidden" name="sifra" value="<%= dost.getSifra() %>">
 						<input type="hidden" name="naziv" value="<%= dost.getNaziv() %>">

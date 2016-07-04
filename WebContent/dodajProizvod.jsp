@@ -121,7 +121,16 @@ body{
 		</tr>
 		<tr>
 			<td align="right"> Dimenzije: </td>
-			<td> <input type="text" name="dimenzije"> </td>
+			<td> 
+				<select name="dimenzije">
+					<option value=""> Izaberite dimenzije... </option>
+					<option value="1"> (20,20) </option>
+					<option value="2"> (50,50) </option>
+					<option value="3"> (100,100) </option>
+					<option value="4"> (500,500) </option>
+					<option value="5"> (1000,1000) </option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td align="right"> Tezina: </td>
@@ -420,7 +429,7 @@ body{
 					<!-- Admin moze dodati svim prodavnicama -->
 					<% if(korisnik.getUloga().equals(Uloga.Administrator)) { %>
 					<% for(Prodavnica prod : prodavnice.getProdavnice().values())  {%>
-						<option value="<%= prod.getNaziv() %>"> <%= prod.getNaziv() %> </option>
+						<option value="<%= prod.getNaziv() %>"> <%= prod.getSifra() %> </option>
 					<% } %>
 					<!-- Prodavac samo prodavnicama za koje je odgovoran -->
 					<% } else { %>

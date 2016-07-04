@@ -34,9 +34,6 @@ body{
 </head>
 <body>
 	<script src="bootstrap/js/bootstrap.js"></script>
-	 
-	<h2> Trenutni proizvodi: </h2>	
-	<%= proizvodi.getProizvodi().size() %>
 
 	<table border=1px width=70% >
 		<tr>
@@ -55,7 +52,11 @@ body{
 			<th> Kolicina u magacinu: </th>
 			<th> Prodavnica: </th>
 			<th> Recenzije: </th>
-			<th> &nbsp; </th>
+			<th> Obrisi: </th>
+			<th> Modifikuj: </th>
+			<% if(korisnik.getUloga().equals(Uloga.Prodavac)) {%>
+			<th> Akcija: </th>
+			<% } %>
 		</tr>
 		
 		<!-- ADMIN, svi proizvodi, svih prodavnica -->
@@ -92,6 +93,8 @@ body{
 						<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
 						<input type="submit" value="Obrisi" class="btn btn-success">
 					</form>
+				</td>
+				<td>
 					<form action="ModifikujProizvod">
 						<input type="hidden" name="sifra" value="<%=pr.getSifra()%>">
 						<input type="submit" value="Modifikuj" class="btn btn-success">
@@ -133,7 +136,7 @@ body{
 								<td> 
 									<form action="PrikaziRecenzijeServlet">
 										<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
-										<input type="submit" value="Prikazi recenzije">	
+										<input type="submit" value="Prikazi recenzije" class="btn btn-success">	
 									</form>
 								</td>
 								<td>
@@ -141,13 +144,15 @@ body{
 										<input type="hidden" name="proizvod" value="<%=pr.getSifra()%>">
 										<input type="submit" value="Obrisi" class="btn btn-success">
 									</form>
+								</td>
+								<td>
 									<form action="ModifikujProizvod">
 										<input type="hidden" name="sifra" value="<%=pr.getSifra()%>">
 										<input type="submit" value="Modifikuj" class="btn btn-success">
 									</form>
 								</td>
 								<td>
-									<p style="color:red;"><a href="akcija.jsp?sifra=<%=pr.getSifra()%>">Stavi na akciju</a> </p>
+									<p><a href="akcija.jsp?sifra=<%=pr.getSifra()%>" class="btn btn-danger">Stavi na akciju</a> </p>
 								</td>								
 							</tr>	
 		<%

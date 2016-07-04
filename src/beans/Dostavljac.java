@@ -8,7 +8,7 @@ public class Dostavljac implements Serializable {
 	private String sifra;		//jedinstvena
 	private String naziv;
 	private String opis;
-	private String drzavePoslovanja;
+	private String[] drzavePoslovanja;
 	private double cijenaPrenosa=0;	//zavisi od dimenzije i tezine proizvoda
 	
 	//Geteri i seteri za sva polja
@@ -30,10 +30,10 @@ public class Dostavljac implements Serializable {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	public String getDrzavePoslovanja() {
+	public String[] getDrzavePoslovanja() {
 		return drzavePoslovanja;
 	}
-	public void setDrzavePoslovanja(String drzavePoslovanja) {
+	public void setDrzavePoslovanja(String[] drzavePoslovanja) {
 		this.drzavePoslovanja = drzavePoslovanja;
 	}
 	public double getCijenaPrenosa() {

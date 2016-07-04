@@ -1,7 +1,7 @@
 package beans;
 
+import java.awt.Point;
 import java.io.Serializable;
-import java.util.HashSet;
 
 import recenzije.ListaRecenzija;
 
@@ -10,7 +10,7 @@ public class Proizvod implements Serializable {
 	private String sifra;		//jedinstvena
 	private String naziv;
 	private String boja;
-	private String dimenzije;
+	private Point dimenzije;
 	private double tezina;
 	private String zemljaProizvodnje;
 	private String nazivProizvodjaca;
@@ -18,7 +18,7 @@ public class Proizvod implements Serializable {
 	private String kategorijaProizvoda;
 	private String slika;
 	private String videoURL;
-	private int ocjena;
+	private double ocjena;
 	private ListaRecenzija recenzije;
 	private int kolicinaUMagacinu;
 	private Akcija akcija;
@@ -45,9 +45,21 @@ public class Proizvod implements Serializable {
 		this.boja = boja;
 	}
 	public String getDimenzije() {
-		return dimenzije;
+		
+		if(dimenzije.x == 20)
+			return "(20,20)";
+		if(dimenzije.x == 50)
+			return "(50,50)";
+		if(dimenzije.x == 100)
+			return "(100,100)";
+		if(dimenzije.x == 500)
+			return "(500,500)";
+		if(dimenzije.x == 1000)
+			return "(1000,1000)";
+		
+		return "";
 	}
-	public void setDimenzije(String dimenzije) {
+	public void setDimenzije(Point dimenzije) {
 		this.dimenzije = dimenzije;
 	}
 	public double getTezina() {
@@ -92,10 +104,10 @@ public class Proizvod implements Serializable {
 	public void setVideoURL(String videoURL) {
 		this.videoURL = videoURL;
 	}
-	public int getOcjena() {
+	public double getOcjena() {
 		return ocjena;
 	}
-	public void setOcjena(int ocjena) {
+	public void setOcjena(double ocjena) {
 		this.ocjena = ocjena;
 	}
 	public ListaRecenzija getRecenzije() {

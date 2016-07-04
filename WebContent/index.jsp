@@ -28,6 +28,27 @@ body{
 	background-size: 100%;
 }
 </style>
+
+<script type="text/javascript">
+	function Validacija()
+	{	
+		var username = document.forms["forma"].korisnickoIme.value;
+		var sifra = document.forms["forma"].sifra.value;
+
+		if(username == null || username=="")
+		{
+			alert ("Unesite korisnicko ime.");	
+			return false;
+		}
+		else if(sifra == null || sifra=="")
+		{
+			alert ("Unesite sifru.");
+			return false;
+		}
+		
+		return true;
+	}
+</script>
 </head>
 
 <body>
@@ -35,7 +56,7 @@ body{
  	
  	<% if(!korisnik.isUlogovan()) {%>
  	
-	<form action="LoginServlet" method="post">
+	<form action="LoginServlet" method="post" name="forma" onsubmit="return Validacija();">
 		<table cellspacing=0 cellpadding=3>
 			<tr>
 				<td align=right>Korisnicko ime:</td>
