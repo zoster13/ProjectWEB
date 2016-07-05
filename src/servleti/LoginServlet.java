@@ -17,6 +17,7 @@ import kolekcije.KategorijeProizvoda;
 import kolekcije.Korisnici;
 import kolekcije.Prodavnice;
 import kolekcije.Proizvodi;
+import kolekcije.Zalbe;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,12 +45,15 @@ public class LoginServlet extends HttpServlet {
 		String fileNameProizvodi = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\proizvodi.xml";
 		String fileNameKategorije = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\kategorije.xml";
 		String fileNameKorisnici = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\korisnici.xml";
+		String fileNameZalbe = "C:\\Users\\Rade\\Documents\\GitHub\\ProjectWEB\\serijalizacija\\zalbe.xml";
+		
 		
 		Proizvodi proizvodi = (Proizvodi) request.getSession().getServletContext().getAttribute("proizvodi");
 		KategorijeProizvoda kategorije = (KategorijeProizvoda) request.getSession().getServletContext().getAttribute("kategorije");
 		Prodavnice prodavnice = (Prodavnice) request.getSession().getServletContext().getAttribute("prodavnice");
 		Dostavljaci dostavljaci = (Dostavljaci) request.getSession().getServletContext().getAttribute("dostavljaci");
 		Korisnici korisnici = (Korisnici) request.getSession().getServletContext().getAttribute("korisnici");
+		Zalbe zalbe = (Zalbe) request.getSession().getServletContext().getAttribute("zalbe");
 		
 		try {
 			proizvodi = (Proizvodi) SerializationUtil.deserialize(fileNameProizvodi);
@@ -57,18 +61,17 @@ public class LoginServlet extends HttpServlet {
 			prodavnice = (Prodavnice) SerializationUtil.deserialize(fileNameProdavnice);
 			dostavljaci = (Dostavljaci) SerializationUtil.deserialize(fileNameDostavljaci);
 			korisnici = (Korisnici) SerializationUtil.deserialize(fileNameKorisnici);
-			
+			zalbe = (Zalbe) SerializationUtil.deserialize(fileNameZalbe);
+
 			request.getSession().getServletContext().setAttribute("proizvodi", proizvodi);
 			request.getSession().getServletContext().setAttribute("kategorije", kategorije);
 			request.getSession().getServletContext().setAttribute("prodavnice", prodavnice);
 			request.getSession().getServletContext().setAttribute("dostavljaci", dostavljaci);
 			request.getSession().getServletContext().setAttribute("korisnici", korisnici);
-			
-		} catch (ClassNotFoundException e) {
+			request.getSession().getServletContext().setAttribute("zalbe", zalbe);			
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} 
 		//-------------------------------------------------------------------------------------//
 		
 		String username = request.getParameter("korisnickoIme");

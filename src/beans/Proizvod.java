@@ -2,6 +2,7 @@ package beans;
 
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.HashSet;
 
 import recenzije.ListaRecenzija;
 
@@ -19,7 +20,7 @@ public class Proizvod implements Serializable {
 	private String slika;
 	private String videoURL;
 	private double ocjena;
-	private ListaRecenzija recenzije;
+	private HashSet<Recenzija> recenzije;
 	private int kolicinaUMagacinu;
 	private Akcija akcija;
 	
@@ -110,11 +111,11 @@ public class Proizvod implements Serializable {
 	public void setOcjena(double ocjena) {
 		this.ocjena = ocjena;
 	}
-	public ListaRecenzija getRecenzije() {
+	public HashSet<Recenzija> getRecenzije() {
 		return recenzije;
 	}
-	public void setRecenzije(ListaRecenzija recenzije) {
-		this.recenzije = recenzije;
+	public void setRecenzije(HashSet<Recenzija> hashSet) {
+		this.recenzije = hashSet;
 	}
 	public int getKolicinaUMagacinu() {
 		return kolicinaUMagacinu;

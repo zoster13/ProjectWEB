@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.Random;
 
 //primjer: posta srbije, fedex, dhl...
 public class Dostavljac implements Serializable {
@@ -10,6 +11,7 @@ public class Dostavljac implements Serializable {
 	private String opis;
 	private String[] drzavePoslovanja;
 	private double cijenaPrenosa=0;	//zavisi od dimenzije i tezine proizvoda
+	private int trajanjePrenosa;
 	
 	//Geteri i seteri za sva polja
 	public String getSifra() {
@@ -60,5 +62,13 @@ public class Dostavljac implements Serializable {
 			dostava = cijenaPrenosa*5;;
 
 		return dostava + porez;
+	}
+	public int getTrajanjePrenosa() {
+		Random rand = new Random();
+		trajanjePrenosa = rand.nextInt(5);
+		return trajanjePrenosa;
+	}
+	public void setTrajanjePrenosa(int trajanjePrenosa) {
+		this.trajanjePrenosa = trajanjePrenosa;
 	}
 }

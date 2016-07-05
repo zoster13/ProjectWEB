@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Prodavnica implements Serializable {
@@ -13,8 +14,8 @@ public class Prodavnica implements Serializable {
 	private String telefon;
 	private String email;
 	private String odgovorniProdavac;
-	private int ocjena;
-	private HashSet<Recenzija> recenzije;
+	private ArrayList<Integer> ocjeneProdanice = new ArrayList<Integer>();
+	private HashSet<Recenzija> recenzije = new HashSet<Recenzija>();
 	
 	//Geteri i Seteri za sva polja
 	public String getSifra() {
@@ -59,11 +60,11 @@ public class Prodavnica implements Serializable {
 	public void setOdgovorniProdavac(String odgovorniProdavac) {
 		this.odgovorniProdavac = odgovorniProdavac;
 	}
-	public int getOcjena() {
-		return ocjena;
+	public ArrayList<Integer> getOcjena() {
+		return ocjeneProdanice;
 	}
-	public void setOcjena(int ocjena) {
-		this.ocjena = ocjena;
+	public void setOcjena(ArrayList<Integer> ocjene) {
+		this.ocjeneProdanice = ocjene;
 	}
 	public HashSet<Recenzija> getRecenzije() {
 		return recenzije;
@@ -71,4 +72,22 @@ public class Prodavnica implements Serializable {
 	public void setRecenzije(HashSet<Recenzija> recenzije) {
 		this.recenzije = recenzije;
 	}
+	
+	public float getSrednjaOcjenaProdavnice()
+	{
+		if(ocjeneProdanice == null)
+			return -1;
+		
+		int sum=0;
+		int cnt = 0;
+		
+		for(int i : ocjeneProdanice)
+		{
+			sum += i;
+			cnt++;
+		}
+		
+		return (float)sum/cnt;
+	}
+	
 }

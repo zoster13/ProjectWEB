@@ -2,6 +2,7 @@ package beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 
 import kolekcije.ProizvodKolicinaKolekcija;
@@ -11,12 +12,19 @@ public class Kupovina implements Serializable {
 
 	private String sifra;		//jedinstvena
 	private String kupac;
-	//private ArrayList<String> prodavnice;
 	private ProizvodKolicinaKolekcija proizvodi;
 	private String dostavljac;
 	private double cijenaDostave;
 	private double ukupnaCijena;
+	private Date datumKupovine;
+	private int trajanjeDostave;
 	
+	public int getTrajanjeDostave() {
+		return trajanjeDostave;
+	}
+	public void setTrajanjeDostave(int trajanjeDostave) {
+		this.trajanjeDostave = trajanjeDostave;
+	}
 	//Geteri i seteri
 	public String getSifra() {
 		return sifra;
@@ -30,12 +38,6 @@ public class Kupovina implements Serializable {
 	public void setKupac(String kupac) {
 		this.kupac = kupac;
 	}
-//	public ArrayList<String> getProdavnica() {
-//		return prodavnice;
-//	}
-//	public void setProdavnica(ArrayList<String> prodavnice) {
-//		this.prodavnice = prodavnice;
-//	}
 	public ProizvodKolicinaKolekcija getProizvodi() {
 		return proizvodi;
 	}
@@ -59,5 +61,11 @@ public class Kupovina implements Serializable {
 	}
 	public void setCijenaDostave(double cijenaDostave) {
 		this.cijenaDostave = cijenaDostave;
+	}
+	public Date getDatumKupovine() {
+		return datumKupovine;
+	}
+	public void setDatumKupovine(Date datumKupovine) {
+		this.datumKupovine = datumKupovine;
 	}
 }

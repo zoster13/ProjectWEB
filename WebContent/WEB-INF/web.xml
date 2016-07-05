@@ -351,5 +351,45 @@
   <servlet-mapping>
     <servlet-name>StaviNaAkciju</servlet-name>
     <url-pattern>/StaviNaAkciju</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajZalbu</display-name>
+    <servlet-name>DodajZalbu</servlet-name>
+    <servlet-class>zalbe.DodajZalbu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajZalbu</servlet-name>
+    <url-pattern>/DodajZalbu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PrihvatiZalbu</display-name>
+    <servlet-name>PrihvatiZalbu</servlet-name>
+    <servlet-class>zalbe.PrihvatiZalbu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrihvatiZalbu</servlet-name>
+    <url-pattern>/PrihvatiZalbu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OdbaciZalbu</display-name>
+    <servlet-name>OdbaciZalbu</servlet-name>
+    <servlet-class>zalbe.OdbaciZalbu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OdbaciZalbu</servlet-name>
+    <url-pattern>/OdbaciZalbu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OcjeniProdavnicuServlet</display-name>
+    <servlet-name>OcjeniProdavnicuServlet</servlet-name>
+    <servlet-class>recenzije.OcjeniProdavnicuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OcjeniProdavnicuServlet</servlet-name>
+    <url-pattern>/OcjeniProdavnicuServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -61,7 +61,7 @@ body{
 				<td> <%= prod.getTelefon() %> </td>
 				<td> <%= prod.getEmail() %> </td>
 				<td> <%= prod.getOdgovorniProdavac() %> </td>
-				<td> <%= prod.getOcjena() %> </td>
+				<td> <%= prod.getSrednjaOcjenaProdavnice() %> </td>
 				<td> <%= prod.getRecenzije() %> </td>
 				<td>
 					<form action="ObrisiProdavnicu">
