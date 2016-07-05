@@ -73,7 +73,7 @@ body{
 				<td> <%= pr.getJedinicnaCijena() %> </td>
 				<td> <%= pr.getKategorijaProizvoda() %> </td>
 				<td> 
-					<img src="C:\\Users\\Rade\\Desktop\\SlikeNovogSada\\<%= pr.getSlika() %>" alt="C:\\Users\\Rade\\Desktop\\SlikeNovogSada\\<%=pr.getSlika()%>" style="width:50px; height:50px;"> 
+					<img src="file:///C:/Users/Rade/Documents/GitHub/ProjectWEB/WebContent/slike/<%= pr.getSlika() %>" style="width:50px; height:50px;"> 
 				</td>
 				<td> <%= pr.getVideoURL() %> </td>
 				<td> <%= pr.getOcjena() %> </td>
