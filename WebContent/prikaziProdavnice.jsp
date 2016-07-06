@@ -41,7 +41,6 @@ body{
 			<th> Email: </th>
 			<th> Odgovorni prodavac: </th>
 			<th> Ocjena: </th>
-			<th> Recenzije: </th>
 			<% if(korisnik.getUloga().equals(Uloga.Administrator)) {%>
 			<th> Obrisi: </th>
 			<th> Modifikuj: </th>
@@ -62,7 +61,6 @@ body{
 				<td> <%= prod.getEmail() %> </td>
 				<td> <%= prod.getOdgovorniProdavac() %> </td>
 				<td> <%= prod.getSrednjaOcjenaProdavnice() %> </td>
-				<td> <%= prod.getRecenzije() %> </td>
 				<td>
 					<form action="ObrisiProdavnicu">
 						<input type="hidden" name="prodavnica" value="<%= prod.getSifra() %>">
@@ -91,8 +89,7 @@ body{
 				<td> <%= prod.getTelefon() %> </td>
 				<td> <%= prod.getEmail() %> </td>
 				<td> <%= prod.getOdgovorniProdavac() %> </td>
-				<td> <%= prod.getOcjena() %> </td>
-				<td> <%= prod.getRecenzije() %> </td>
+				<td> <%= prod.getSrednjaOcjenaProdavnice() %> </td>
 				<td>
 					<!-- Prodavac moze samo da modifikuje -->
 					<form action="ModifikujProdavnicu">
